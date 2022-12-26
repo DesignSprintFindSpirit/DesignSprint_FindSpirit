@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Cart/Cart.dart';
 import './Widgets/PickPlace.dart';
 import './Widgets/AdBlock.dart';
 
@@ -18,12 +19,16 @@ class Home extends StatelessWidget {
         // ),
         actions: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 21),
-            child: Icon(
-              Icons.shopping_cart,
-              size: 24,
-            ),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 21),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cart');
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  size: 24,
+                ),
+              )),
         ],
       ),
       body: Column(
