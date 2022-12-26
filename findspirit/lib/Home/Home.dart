@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Cart/Cart.dart';
 import './Widgets/PickPlace.dart';
 import './Widgets/AdBlock.dart';
+import './Widgets/OrderListBox.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -32,7 +33,7 @@ class Home extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: [pickPlaceBtn(), adBlock()],
+        children: [pickPlaceBtn(), adBlock(), orderListBox()],
       ),
       drawer: Drawer(
           child: ListView(
