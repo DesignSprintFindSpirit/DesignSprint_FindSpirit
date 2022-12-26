@@ -3,6 +3,7 @@ import '../Cart/Cart.dart';
 import './Widgets/PickPlace.dart';
 import './Widgets/AdBlock.dart';
 import './Widgets/OrderListBox.dart';
+import './Widgets/CategoryBox.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -33,7 +34,7 @@ class Home extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: [pickPlaceBtn(), adBlock(), orderListBox()],
+        children: [pickPlaceBtn(), adBlock(), orderListBox(), categoryBox()],
       ),
       drawer: Drawer(
           child: ListView(

@@ -32,7 +32,8 @@ class orderListBox extends StatelessWidget {
               Text(
                 "내 주문 확인",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 33),
-              )
+              ),
+              // Image.asset('assets/images/beer.png')
             ],
           ),
         ),
