@@ -4,7 +4,6 @@ class alcohol extends StatelessWidget {
   final String imgLink;
   final String text;
   const alcohol(this.imgLink, this.text);
-// Image.asset('assets/images/beer.png')
   @override
   Widget build(BuildContext context) {
     return Center(
