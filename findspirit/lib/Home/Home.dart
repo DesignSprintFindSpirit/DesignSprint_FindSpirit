@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Cart/Cart.dart';
+import 'package:get/get.dart';
 import './Widgets/PickPlace.dart';
 import './Widgets/AdBlock.dart';
 import './Widgets/OrderListBox.dart';
@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/cart');
+              Get.toNamed("/cart");
             },
             icon: Icon(
               Icons.shopping_cart,
