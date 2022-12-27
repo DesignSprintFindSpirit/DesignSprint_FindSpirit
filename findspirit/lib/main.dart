@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../Home/Home.dart';
 import '../Cart/Cart.dart';
 import '../Place/place.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,14 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'TTaraJu',
       initialRoute: '/',
-      routes: {
-        '/': (context) => const Home(),
-        '/place': (context) => const Place(),
-        '/cart': (context) => const Cart()
-      },
+      getPages: [
+        GetPage(name: '/', page: () => Home()),
+        GetPage(name: '/place', page: () => Place()),
+        GetPage(name: '/cart', page: () => Cart()),
+      ],
     );
   }
 }
