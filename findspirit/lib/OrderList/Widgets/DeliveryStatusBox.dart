@@ -27,11 +27,16 @@ class deliveryStatusBox extends StatelessWidget {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.circle),
-                  Text(
-                    "12월 13일",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                    textAlign: TextAlign.left,
+                  Row(
+                    children: [
+                      Icon(Icons.circle),
+                      Text(
+                        "12월 13일",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
                   ),
                   Text("11:20 | 유성구 보관소 | 보관",
                       style:
