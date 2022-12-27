@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 21),
               child: IconButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/cart');
+                  Navigator.pushNamed(context, '/place');
                 },
                 icon: Icon(
                   Icons.shopping_cart,

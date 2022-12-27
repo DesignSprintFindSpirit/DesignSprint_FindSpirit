@@ -21,7 +21,7 @@ class Place extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.home,
