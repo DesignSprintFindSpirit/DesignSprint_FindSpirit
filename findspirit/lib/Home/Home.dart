@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
