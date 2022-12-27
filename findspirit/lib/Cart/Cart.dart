@@ -1,16 +1,96 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Cart extends StatefulWidget {
+import './Widgets/CartLiquorBox.dart';
+import './Widgets/CartNotifcationBox.dart';
+
+class Cart extends StatelessWidget {
   const Cart({super.key});
 
   @override
-  State<Cart> createState() => _CartState();
-}
-
-class _CartState extends State<Cart> {
-  @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            iconTheme: IconThemeData(size: 40),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios_new),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Get.toNamed("/home");
+                },
+                icon: Icon(
+                  Icons.home,
+                  // size: 40,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Get.toNamed("/cart");
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  // size: 40,
+                ),
+              )
+            ],
+          ),
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              CartNotificationBox(
+                  pickupPlace: "대전광역시 유성구 궁동 대학로 99",
+                  pickupDate: "1일 뒤 (2022년 12월 22일)"),
+              Expanded(
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  children: [
+                    CartLiquorBox(
+                        liquorName: "잭다니엘",
+                        liquorPrice: 30000,
+                        liquorAmount: 1),
+                    CartLiquorBox(
+                        liquorName: "잭다니엘",
+                        liquorPrice: 30000,
+                        liquorAmount: 1),
+                    CartLiquorBox(
+                        liquorName: "잭다니엘",
+                        liquorPrice: 30000,
+                        liquorAmount: 1),
+                    CartLiquorBox(
+                        liquorName: "잭다니엘",
+                        liquorPrice: 30000,
+                        liquorAmount: 1),
+                    CartLiquorBox(
+                        liquorName: "잭다니엘",
+                        liquorPrice: 30000,
+                        liquorAmount: 1),
+                  ],
+                ),
+              ),
+              TextButton(
+                  onPressed: () => {},
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                    ),
+                    child: Text(
+                      "Test",
+                    ),
+                  )),
+            ],
+          )),
+    );
+    ;
   }
 }
