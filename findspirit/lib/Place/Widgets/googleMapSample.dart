@@ -15,35 +15,13 @@ class _UserMapInfoState extends State<MapSample> {
   final List<Marker> markers = [];
 
   late GoogleMapController mapController;
-  late LatLng _currentPosition;
+  late LatLng _currentPosition =
+      const LatLng(36.34341670217808, 127.41633363068104);
 
   @override
   void initState() {
     super.initState();
     getLocation();
-    addMarker(LatLng(127.341827, 36.3620646));
-    addMarker(LatLng(127.344154, 36.3618326));
-    addMarker(LatLng(127.347599, 36.3621741));
-    // setState(() {
-    //   // 궁동 458-13 GS25 충남대빌리지점
-    //   markers.add(Marker(
-    //       markerId: MarkerId("1".toString()),
-    //       draggable: true,
-    //       onTap: () => print("Marker!"),
-    //       position: LatLng(127.341827, 36.3620646)));
-    //   // 궁동 479-11 세븐일레븐충남대사랑점
-    //   markers.add(Marker(
-    //       markerId: MarkerId("2".toString()),
-    //       draggable: true,
-    //       onTap: () => print("Marker!"),
-    //       position: LatLng(127.344154, 36.3618326)));
-    //   // 궁동 414-16 GS25 궁동충남대점
-    //   markers.add(Marker(
-    //       markerId: MarkerId("3".toString()),
-    //       draggable: true,
-    //       onTap: () => print("Marker!"),
-    //       position: LatLng(127.347599, 36.3621741)));
-    // });
   }
 
   // cur location fetch
@@ -57,21 +35,47 @@ class _UserMapInfoState extends State<MapSample> {
     double long = position.longitude;
 
     LatLng location = LatLng(lat, long);
-
-    setState(() {
-      _currentPosition = location;
-    });
+    _currentPosition = location;
   }
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
+    addMarker(LatLng(36.3620646, 127.341827), "궁동 458-13 GS25 충남대빌리지점");
+    addMarker(LatLng(36.3618326, 127.344154), "궁동 479-11 세븐일레븐충남대사랑점");
+    addMarker(LatLng(36.3621741, 127.347599), "궁동 414-16 GS25 궁동충남대점");
   }
 
-  addMarker(cordinate) {
+  addMarker(cordinate, String Address) {
+    mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
     int id = Random().nextInt(100);
     setState(() {
-      markers
-          .add(Marker(position: cordinate, markerId: MarkerId(id.toString())));
+      markers.add(Marker(
+          markerId: MarkerId(id.toString()),
+          onTap: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  height: 200,
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(Address),
+                        ElevatedButton(
+                          child: const Text('선택'),
+                          onPressed: () => Navigator.pop(context),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          position: cordinate));
     });
   }
 
@@ -85,43 +89,6 @@ class _UserMapInfoState extends State<MapSample> {
           zoom: 14.0,
         ),
         markers: Set.from(markers),
-        onTap: (cordinate) {
-          mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
-          addMarker(cordinate);
-
-          mapController.animateCamera(
-              CameraUpdate.newLatLng(LatLng(127.341827, 36.3620646)));
-          mapController.animateCamera(
-              CameraUpdate.newLatLng(LatLng(127.344154, 36.3618326)));
-          mapController.animateCamera(
-              CameraUpdate.newLatLng(LatLng(127.347599, 36.3621741)));
-          addMarker(LatLng(127.341827, 36.3620646));
-          addMarker(LatLng(127.344154, 36.3618326));
-          addMarker(LatLng(127.347599, 36.3621741));
-
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: 200,
-                color: Colors.amber,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text('Modal BottomSheet'),
-                      ElevatedButton(
-                        child: const Text('Done!'),
-                        onPressed: () => Navigator.pop(context),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
-        },
       ),
     );
   }
