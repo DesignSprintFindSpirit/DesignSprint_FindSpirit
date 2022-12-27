@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class pickPlaceBtn extends StatelessWidget {
   const pickPlaceBtn({super.key});
@@ -12,7 +13,7 @@ class pickPlaceBtn extends StatelessWidget {
           SizedBox(height: 16),
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/place');
+              Get.toNamed("/place");
             },
             child: Row(
               children: [
