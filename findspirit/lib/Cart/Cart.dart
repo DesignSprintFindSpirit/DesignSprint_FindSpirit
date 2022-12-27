@@ -52,6 +52,7 @@ class Cart extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
+                  padding: EdgeInsets.zero,
                   children: [
                     CartLiquorBox(
                         liquorName: "잭다니엘",
@@ -76,18 +77,24 @@ class Cart extends StatelessWidget {
                   ],
                 ),
               ),
-              TextButton(
-                  onPressed: () => {},
-                  child: Container(
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Colors.black),
+                      foregroundColor: MaterialStatePropertyAll(Colors.white),
+                      padding: MaterialStatePropertyAll(EdgeInsets.zero),
                     ),
-                    child: Text(
-                      "Test",
-                    ),
-                  )),
+                    onPressed: () => {},
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "360,000원 결제하기",
+                      ),
+                    )),
+              ),
             ],
           )),
     );
