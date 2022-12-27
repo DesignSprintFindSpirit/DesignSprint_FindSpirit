@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             deliveryStatusBox(),
+            deliveryStatusBox(),
+            deliveryStatusBox(),
           ],
         ),
       ),
