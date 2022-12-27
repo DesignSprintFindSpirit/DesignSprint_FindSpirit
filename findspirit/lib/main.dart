@@ -4,6 +4,7 @@ import '../Home/Home.dart';
 import '../Cart/Cart.dart';
 import '../Place/place.dart';
 import 'package:get/get.dart';
+import 'Category/MidFilter.dart';
 
 void main() {
   runApp(const MyApp());
