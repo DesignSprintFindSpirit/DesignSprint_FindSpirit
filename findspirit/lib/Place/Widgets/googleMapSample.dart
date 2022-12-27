@@ -21,6 +21,27 @@ class _UserMapInfoState extends State<MapSample> {
   void initState() {
     super.initState();
     getLocation();
+    _onMapCreated;
+    setState(() {
+      // 궁동 458-13 GS25 충남대빌리지점
+      markers.add(Marker(
+          markerId: MarkerId("1".toString()),
+          draggable: true,
+          onTap: () => print("Marker!"),
+          position: LatLng(127.341827, 36.3620646)));
+      // 궁동 479-11 세븐일레븐충남대사랑점
+      markers.add(Marker(
+          markerId: MarkerId("2".toString()),
+          draggable: true,
+          onTap: () => print("Marker!"),
+          position: LatLng(127.344154, 36.3618326)));
+      // 궁동 414-16 GS25 궁동충남대점
+      markers.add(Marker(
+          markerId: MarkerId("3".toString()),
+          draggable: true,
+          onTap: () => print("Marker!"),
+          position: LatLng(127.347599, 36.3621741)));
+    });
   }
 
   // cur location fetch
@@ -45,30 +66,50 @@ class _UserMapInfoState extends State<MapSample> {
   }
 
   addMarker(cordinate) {
+    mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
     int id = Random().nextInt(100);
     setState(() {
       markers
           .add(Marker(position: cordinate, markerId: MarkerId(id.toString())));
-      print(markers);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Map'),
-      ),
       body: GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _currentPosition,
-          zoom: 16.0,
+          zoom: 14.0,
         ),
-        markers: markers.toSet(),
+        markers: Set.from(markers),
         onTap: (cordinate) {
           mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
           addMarker(cordinate);
+
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                height: 200,
+                color: Colors.amber,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text('Modal BottomSheet'),
+                      ElevatedButton(
+                        child: const Text('Done!'),
+                        onPressed: () => Navigator.pop(context),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
         },
       ),
     );
