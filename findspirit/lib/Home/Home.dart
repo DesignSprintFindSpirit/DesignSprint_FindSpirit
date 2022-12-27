@@ -23,21 +23,8 @@ class Home extends StatelessWidget {
             },
             icon: Icon(
               Icons.shopping_cart,
-              // size: 40,
             ),
           )
-          // Padding(
-          //     padding: EdgeInsets.symmetric(horizontal: 20),
-          //     // child: IconButton(
-          //     //   onPressed: () {
-          //     //     Navigator.pushNamed(context, '/cart');
-          //     //   },
-          //     //   icon: Icon(
-          //     //     Icons.shopping_cart,
-          //     //     size: 40,
-          //     //   ),
-          //     // )
-          //     ),
         ],
       ),
       body: Column(
