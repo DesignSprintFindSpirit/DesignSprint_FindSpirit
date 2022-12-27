@@ -24,28 +24,66 @@ class deliveryStatusBox extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 26),
               child: Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.circle),
-                      Text(
-                        "12월 13일",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
-                        textAlign: TextAlign.left,
+                child: DataTable(
+                  columns: const <DataColumn>[
+                    DataColumn(
+                      label: Expanded(
+                        child: Text(
+                          '12월 13일',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
                       ),
-                    ],
-                  ),
-                  Text("11:20 | 유성구 보관소 | 보관",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                  Text("08:00 | 옥천 hub | 출고",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                ],
-              )),
+                    ),
+                    DataColumn(
+                      label: Expanded(
+                        child: Text(
+                          '위치',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Expanded(
+                        child: Text(
+                          '상태',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                  ],
+                  rows: const <DataRow>[
+                    DataRow(
+                      cells: <DataCell>[
+                        DataCell(Text('11:20',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15))),
+                        DataCell(Text('유성구 보관소',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15))),
+                        DataCell(Text('보관',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15))),
+                      ],
+                    ),
+                    DataRow(
+                      cells: <DataCell>[
+                        DataCell(Text('08:00',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15))),
+                        DataCell(Text('옥천 hub',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15))),
+                        DataCell(Text('출고',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15))),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           SizedBox(height: 16),
