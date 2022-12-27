@@ -12,6 +12,7 @@ class pickPlaceBtn extends StatelessWidget {
         children: [
           SizedBox(height: 16),
           TextButton(
+            style: TextButton.styleFrom(primary: Colors.black),
             onPressed: () {
               Get.toNamed("/place");
             },
@@ -19,7 +20,7 @@ class pickPlaceBtn extends StatelessWidget {
               children: [
                 Text(
                   "픽업장소",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 Icon(
                   Icons.arrow_drop_down,
