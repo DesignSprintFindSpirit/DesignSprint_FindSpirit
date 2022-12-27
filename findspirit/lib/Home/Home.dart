@@ -20,17 +20,27 @@ class Home extends StatelessWidget {
         //   size: 24,
         // ),
         actions: [
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 21),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/place');
-                },
-                icon: Icon(
-                  Icons.shopping_cart,
-                  size: 24,
-                ),
-              )),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+            icon: Icon(
+              Icons.shopping_cart,
+              // size: 40,
+            ),
+          )
+          // Padding(
+          //     padding: EdgeInsets.symmetric(horizontal: 20),
+          //     // child: IconButton(
+          //     //   onPressed: () {
+          //     //     Navigator.pushNamed(context, '/cart');
+          //     //   },
+          //     //   icon: Icon(
+          //     //     Icons.shopping_cart,
+          //     //     size: 40,
+          //     //   ),
+          //     // )
+          //     ),
         ],
       ),
       body: Column(
