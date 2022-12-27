@@ -1,50 +1,51 @@
-import 'dart:async';
-
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:google_maps_widget/google_maps_widget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapSample extends StatefulWidget {
-  const MapSample({Key? key}) : super(key: key);
+  late final String title;
 
   @override
-  State<MapSample> createState() => MapSampleState();
+  _MapSampleState createState() => _MapSampleState();
 }
 
-class MapSampleState extends State<MapSample> {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
+class _MapSampleState extends State<MapSample> {
+  // 애플리케이션에서 지도를 이동하기 위한 컨트롤러
+  late GoogleMapController _controller;
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
+  // 이 값은 지도가 시작될 때 첫 번째 위치입니다.
+  final CameraPosition _initialPosition =
+      CameraPosition(target: LatLng(41.017901, 28.847953));
 
-  static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  // 지도 클릭 시 표시할 장소에 대한 마커 목록
+  final List<Marker> markers = [];
+
+  addMarker(cordinate) {
+    int id = Random().nextInt(100);
+
+    setState(() {
+      markers
+          .add(Marker(position: cordinate, markerId: MarkerId(id.toString())));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
-      ),
-    );
-  }
+    return GoogleMap(
+      initialCameraPosition: _initialPosition,
+      mapType: MapType.normal,
+      onMapCreated: (controller) {
+        setState(() {
+          _controller = controller;
+        });
+      },
+      markers: markers.toSet(),
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+      // 클릭한 위치가 중앙에 표시
+      onTap: (cordinate) {
+        _controller.animateCamera(CameraUpdate.newLatLng(cordinate));
+        addMarker(cordinate);
+      },
+    );
   }
 }
