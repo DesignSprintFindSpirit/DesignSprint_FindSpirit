@@ -21,27 +21,29 @@ class _UserMapInfoState extends State<MapSample> {
   void initState() {
     super.initState();
     getLocation();
-    _onMapCreated;
-    setState(() {
-      // 궁동 458-13 GS25 충남대빌리지점
-      markers.add(Marker(
-          markerId: MarkerId("1".toString()),
-          draggable: true,
-          onTap: () => print("Marker!"),
-          position: LatLng(127.341827, 36.3620646)));
-      // 궁동 479-11 세븐일레븐충남대사랑점
-      markers.add(Marker(
-          markerId: MarkerId("2".toString()),
-          draggable: true,
-          onTap: () => print("Marker!"),
-          position: LatLng(127.344154, 36.3618326)));
-      // 궁동 414-16 GS25 궁동충남대점
-      markers.add(Marker(
-          markerId: MarkerId("3".toString()),
-          draggable: true,
-          onTap: () => print("Marker!"),
-          position: LatLng(127.347599, 36.3621741)));
-    });
+    addMarker(LatLng(127.341827, 36.3620646));
+    addMarker(LatLng(127.344154, 36.3618326));
+    addMarker(LatLng(127.347599, 36.3621741));
+    // setState(() {
+    //   // 궁동 458-13 GS25 충남대빌리지점
+    //   markers.add(Marker(
+    //       markerId: MarkerId("1".toString()),
+    //       draggable: true,
+    //       onTap: () => print("Marker!"),
+    //       position: LatLng(127.341827, 36.3620646)));
+    //   // 궁동 479-11 세븐일레븐충남대사랑점
+    //   markers.add(Marker(
+    //       markerId: MarkerId("2".toString()),
+    //       draggable: true,
+    //       onTap: () => print("Marker!"),
+    //       position: LatLng(127.344154, 36.3618326)));
+    //   // 궁동 414-16 GS25 궁동충남대점
+    //   markers.add(Marker(
+    //       markerId: MarkerId("3".toString()),
+    //       draggable: true,
+    //       onTap: () => print("Marker!"),
+    //       position: LatLng(127.347599, 36.3621741)));
+    // });
   }
 
   // cur location fetch
@@ -66,7 +68,6 @@ class _UserMapInfoState extends State<MapSample> {
   }
 
   addMarker(cordinate) {
-    mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
     int id = Random().nextInt(100);
     setState(() {
       markers
@@ -87,6 +88,16 @@ class _UserMapInfoState extends State<MapSample> {
         onTap: (cordinate) {
           mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
           addMarker(cordinate);
+
+          mapController.animateCamera(
+              CameraUpdate.newLatLng(LatLng(127.341827, 36.3620646)));
+          mapController.animateCamera(
+              CameraUpdate.newLatLng(LatLng(127.344154, 36.3618326)));
+          mapController.animateCamera(
+              CameraUpdate.newLatLng(LatLng(127.347599, 36.3621741)));
+          addMarker(LatLng(127.341827, 36.3620646));
+          addMarker(LatLng(127.344154, 36.3618326));
+          addMarker(LatLng(127.347599, 36.3621741));
 
           showModalBottomSheet<void>(
             context: context,
