@@ -47,6 +47,30 @@ class OrderList extends StatelessWidget {
           return buildOrderCard();
         },
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 70,
+          decoration: BoxDecoration(
+              border: Border(top: BorderSide(color: Colors.black, width: 3))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.receipt,
+                size: 40,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                '총액: 156,000원',
+                textAlign: TextAlign.right,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              ),
+            ],
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
     );
   }
@@ -57,7 +81,7 @@ Widget buildOrderCard() {
     elevation: 4.0,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+      padding: const EdgeInsets.only(top: 30),
       child: Row(
         children: <Widget>[
           Flexible(flex: 1, child: alcohol('assets/images/whiskey.png', '위스키')),
@@ -80,32 +104,3 @@ Widget buildOrderCard() {
     ),
   );
 }
-
-// Widget buildOrderCard() {
-//   return Card(
-//     elevation: 4.0,
-//     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
-//     child: Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 13.0),
-//       child: Row(
-//         children: <Widget>[
-//           Container(
-//             padding: const EdgeInsets.only(right: 20.0),
-//             child: Row(
-//               mainAxisSize: MainAxisSize.min,
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Flexible(
-//                     flex: 1,
-//                     child: alcohol('assets/images/whiskey.png', '위스키')),
-//                 Flexible(
-//                     flex: 3,
-//                     child: AddressAndName('유성구 궁동 xxx', '제임슨 스탠다드', 3)),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     ),
-//   );
-// }
