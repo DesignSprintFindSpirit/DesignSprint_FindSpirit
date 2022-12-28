@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "815815905054",
+    "project_id": "findsprit",
+    "storage_bucket": "findsprit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815815905054:android:ea89e9ec98f01c15cbc30f",
+        "android_client_info": {
+          "package_name": "com.example.findspirit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815815905054-n665n6tjpq59u5930242o9fr8q341n4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPPHUMghJ4WmZ39oqFnTp2E8XBcolqRSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815815905054-n665n6tjpq59u5930242o9fr8q341n4g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "815815905054-jvl5gig7q1n6o8vigpcrhn7if291hjhq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.findspirit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

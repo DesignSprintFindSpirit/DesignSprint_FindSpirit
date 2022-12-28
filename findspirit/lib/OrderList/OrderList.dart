@@ -1,12 +1,21 @@
 import 'package:findspirit/OrderList/Widgets/qrCodeGenerator.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:findspirit/Home/Widgets/Alcohols.dart';
 import './Widgets/AddressAndName.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:get/get.dart';
 
 class OrderList extends StatelessWidget {
-  const OrderList({Key? key}) : super(key: key);
+  final firestore = FirebaseFirestore.instance;
+
+  getData() async {
+    var result =
+        await firestore.collection('product').doc('AYQLAG3H9K7wRqcAXHf0').get();
+    print(result.data());
+  }
+
+  OrderList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +42,7 @@ class OrderList extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
+              getData();
               Navigator.pushNamed(context, '/cart');
             },
             icon: Icon(
