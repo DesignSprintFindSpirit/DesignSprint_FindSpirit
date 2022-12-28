@@ -39,6 +39,7 @@ dependencies:
   google_maps_flutter: ^2.2.2
   get: ^4.6.5
   geolocator: ^9.0.2
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
