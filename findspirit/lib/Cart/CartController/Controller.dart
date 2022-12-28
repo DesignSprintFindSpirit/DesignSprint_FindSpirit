@@ -22,9 +22,21 @@ class CartController extends GetxController {
   }
 
   void incTotalPrice() {
-    // when 'plus' button is clicked, it will be executed.
+    // when 'plus' button is clicked, it will be executed. (second)
   }
   void decTotalPrice() {
-    // when 'minus' button is clicked, it will be executed.
+    // when 'minus' button is clicked, it will be executed. (second)
+  }
+
+  void incLiquorAmount() {
+    // when 'plus' button is clicked, it will be executed. (first)
+
+    incTotalPrice();
+  }
+
+  void deccLiquorAmount() {
+    // when 'minus' button is clicked, it will be executed. (first)
+
+    decTotalPrice();
   }
 }
