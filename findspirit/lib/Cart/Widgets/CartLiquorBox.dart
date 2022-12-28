@@ -1,15 +1,19 @@
 import 'package:findspirit/main.dart';
 import 'package:flutter/material.dart';
 import '../CartController/Controller.dart';
+import 'package:intl/intl.dart';
+
+var f = NumberFormat('###,###,###,###');
 
 class CartLiquorBox extends StatelessWidget {
   CartLiquorBox({
     super.key,
+    required this.imgLink,
     required this.liquorName,
     required this.liquorPrice,
     required this.liquorAmount,
   });
-
+  String? imgLink;
   String? liquorName;
   int? liquorPrice;
   int? liquorAmount;
@@ -17,9 +21,8 @@ class CartLiquorBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 13),
       child: Container(
-        //width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -31,67 +34,75 @@ class CartLiquorBox extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
-          //mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-                height: 96,
-                width: 96,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomLeft: Radius.circular(12)),
-                )
-                //child: Image.asset("assets/images/whiskey.png")
-                ),
-            Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(children: [
+            Image.asset(imgLink!),
+            Expanded(
+                child: Column(
               children: [
-                Container(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Row(
                   children: [
-                    Text(
-                      "$liquorName",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "$liquorPrice원",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                )),
-                SizedBox(width: 100),
-                Container(
-                  child: Column(
-                    children: [
-                      IconButton(onPressed: () => {}, icon: Icon(Icons.delete)),
-                      Row(
-                        children: [
-                          IconButton(
-                              onPressed: () => {},
-                              icon: Icon(Icons.add_circle_outlined)),
-                          Text(
-                            "$liquorAmount",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          IconButton(
-                              onPressed: () => {},
-                              icon: Icon(Icons.remove_circle_outlined))
-                        ],
+                    Expanded(
+                        child: Text(
+                      '$liquorName',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(
+                        fontSize: 20,
                       ),
-                    ],
-                  ),
+                    )),
+                    Icon(Icons.delete)
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                      // color: Colors.amber,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              f.format(liquorPrice),
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
+                            )
+                          ]),
+                    )),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                        onPressed: () => {},
+                        icon: Icon(
+                          Icons.remove_circle_outlined,
+                          size: 30,
+                        )),
+                    Text(
+                      "$liquorAmount",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        onPressed: () => {},
+                        icon: Icon(
+                          Icons.add_circle_outlined,
+                          size: 30,
+                        ))
+                  ],
                 ),
               ],
-            ),
-          ],
+            ))
+          ]),
         ),
       ),
     );
