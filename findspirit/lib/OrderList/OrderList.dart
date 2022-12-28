@@ -1,6 +1,7 @@
+import 'package:findspirit/OrderList/Widgets/qrCodeGenerator.dart';
 import 'package:flutter/material.dart';
 import 'package:findspirit/Home/Widgets/Alcohols.dart';
-import 'package:findspirit/OrderList/model/AddressAndName.dart';
+import './Widgets/AddressAndName.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:get/get.dart';
 
@@ -79,9 +80,7 @@ class OrderList extends StatelessWidget {
 Widget buildOrderCard() {
   return InkWell(
       onTap: () {
-
         Get.toNamed("/orderListIndex");
-
       },
       child: Container(
         child: Card(
@@ -89,9 +88,7 @@ Widget buildOrderCard() {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
           child: Padding(
-
             padding: const EdgeInsets.symmetric(horizontal: 13.0),
-
             child: Row(
               children: <Widget>[
                 Flexible(
@@ -101,16 +98,7 @@ Widget buildOrderCard() {
                     flex: 3, child: AddressAndName('유성구 궁동 99', '제임슨 스탠다드', 3)),
                 Flexible(
                   flex: 1,
-                  child: Column(
-                    children: <Widget>[
-                      QrImage(
-                        data: "위스키/유성구 궁동 xxx/제임슨 스탠다드/3",
-                        version: QrVersions.auto,
-                        backgroundColor: Colors.white,
-                        size: 100.0,
-                      )
-                    ],
-                  ),
+                  child: QrCodeGenerator("위스키/유성구 궁동 99/제임슨 스탠다드/3", 100.0),
                 ),
               ],
             ),
