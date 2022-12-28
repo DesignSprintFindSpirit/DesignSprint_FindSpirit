@@ -17,49 +17,79 @@ class CartLiquorBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
-      child: Column(
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  blurRadius: 5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: Container(
+          Image.asset("assets/images/whiskey.png"),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
                 //width: double.infinity,
-                alignment: Alignment.topLeft,
-                child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
-                    Text(
-                      "$liquorName",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    Text(
-                      "$liquorPrice원",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    Text(
-                      "$liquorAmount개",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
                     ),
                   ],
                 ),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  child: Container(
+                    //width: double.infinity,
+                    alignment: Alignment.topLeft,
+                    child: Row(
+                      //mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "$liquorName",
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            Text(
+                              "$liquorPrice원",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          //mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            IconButton(
+                                alignment: Alignment.topRight,
+                                onPressed: () => {},
+                                icon: Icon(Icons.delete)),
+                            Row(
+                              children: [
+                                IconButton(
+                                    padding: EdgeInsets.zero,
+                                    onPressed: () => {},
+                                    icon: Icon(Icons.add_circle_outlined)),
+                                Text(
+                                  "$liquorAmount개",
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                IconButton(
+                                    padding: EdgeInsets.zero,
+                                    onPressed: () => {},
+                                    icon: Icon(Icons.remove_circle_outlined)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
