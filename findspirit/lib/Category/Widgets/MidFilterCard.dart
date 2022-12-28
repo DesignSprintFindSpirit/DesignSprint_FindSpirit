@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MidFilterCard extends StatelessWidget {
+
   final String imgLink;
   final String title;
   final String dosu;
@@ -40,5 +41,6 @@ class MidFilterCard extends StatelessWidget {
         ),
       ),
     );
+
   }
 }
