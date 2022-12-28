@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:findspirit/ComparePrice/Widgets/productInfo.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ComParePrice());
 }
 
-class MyApp extends StatelessWidget {
+class ComParePrice extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: ComparePricePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class ComparePricePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _ComparePricePageState createState() => _ComparePricePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ComparePricePageState extends State<ComparePricePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,10 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
       ),
       body: ListView(children: [
+        productInfo(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(height: 200),
             DefaultTabController(
                 length: 3, // length of tabs
                 initialIndex: 0,
