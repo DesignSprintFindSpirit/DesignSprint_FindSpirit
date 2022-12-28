@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'Widgets/CircleBox.dart';
 import 'Widgets/SearchBar.dart';
 import 'Widgets/FilterBox.dart';
+import 'Widgets/MidFilterCard.dart';
 
 class MidFilter extends StatelessWidget {
   const MidFilter({super.key});
@@ -45,7 +46,11 @@ class MidFilter extends StatelessWidget {
             ),
             // alcohol('assets/images/whiskey.png', '위스키'),
             body: Column(
-              children: [CircleBox(), SearchBar(), FliterBox()],
+              children: [
+                CircleBox(),
+                SearchBar(),
+                FliterBox(),
+              ],
             )));
   }
 }

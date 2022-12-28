@@ -27,8 +27,11 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [pickPlaceBtn(), adBlock(), orderListBox(), categoryBox()],
+        // child: Column(
+        //   children: [pickPlaceBtn(), adBlock(), orderListBox(), categoryBox()],
+        // ),
       ),
       drawer: Drawer(
           child: ListView(
