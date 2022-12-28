@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'placeInfoController.dart';
+import 'package:get/get.dart';
 
-class placeInfo extends StatelessWidget {
+class placeInfoContainer extends StatelessWidget {
   final String adress;
   final String pickup_time;
   final String phone_number;
 
-  const placeInfo(
+  const placeInfoContainer(
       {super.key,
       required this.adress,
       required this.pickup_time,
@@ -42,7 +44,7 @@ class placeInfo extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
                     child: Text(adress,
                         style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold)),
+                            fontSize: 12, fontWeight: FontWeight.bold)),
                   ),
                 ),
                 Align(
@@ -91,7 +93,10 @@ class placeInfo extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 10,
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      final controller = Get.put(placeInfoController());
+                      controller.setPlace(adress, pickup_time, phone_number);
+                    },
                   )),
                 ),
               ],

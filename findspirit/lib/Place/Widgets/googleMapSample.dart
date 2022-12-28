@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import 'AdressControler.dart';
+import 'placeInfoController.dart';
 import 'package:get/get.dart';
 
 class MapSample extends StatefulWidget {
@@ -41,12 +41,14 @@ class _UserMapInfoState extends State<MapSample> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
-    addMarker(LatLng(36.3620646, 127.341827), "궁동 458-13 GS25 충남대빌리지점",
-        "09:00 ~ 23:00", "042)123-4567");
-    addMarker(LatLng(36.3618326, 127.344154), "궁동 479-11 세븐일레븐충남대사랑점",
-        "20:00 ~ 23:00", "042)379-8379");
-    addMarker(LatLng(36.3621741, 127.347599), "궁동 414-16 GS25 궁동충남대점",
-        "10:00 ~ 23:00", "042)1234-1234");
+    final PlaceController = Get.put(placeInfoController());
+    for (int i = 0; i < PlaceController.placeInfoList.length; i++) {
+      addMarker(
+          PlaceController.placeInfoList[i].getLatLng(),
+          PlaceController.placeInfoList[i].getAdress(),
+          PlaceController.placeInfoList[i].getPickupTime(),
+          PlaceController.placeInfoList[i].getPhoneNumber());
+    }
   }
 
   addMarker(cordinate, String adress, String pickup_time, String phone_number) {
@@ -56,8 +58,8 @@ class _UserMapInfoState extends State<MapSample> {
       markers.add(Marker(
           markerId: MarkerId(id.toString()),
           onTap: () {
-            final controller = Get.put(AdressController());
-            controller.setAdress(adress, pickup_time, phone_number);
+            final controller = Get.put(placeInfoController());
+            controller.setPlace(adress, pickup_time, phone_number);
           },
           position: cordinate));
     });
