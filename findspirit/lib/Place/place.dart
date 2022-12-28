@@ -69,11 +69,39 @@ class Place extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               children: <Widget>[
                 Container(
-                  height: 100,
-                  child: const Center(child: Text('hello')),
+                  padding: EdgeInsets.fromLTRB(10, 5, 5, 5),
+                  height: 150,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 150,
+                        height: 130,
+                        child: Expanded(
+                          child:
+                              Image(image: AssetImage('/assets/images/gs.png')),
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white,
+                        ),
+                      ),
+                      VerticalDivider(
+                        thickness: 1,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white,
                   ),
                 ),
               ],
