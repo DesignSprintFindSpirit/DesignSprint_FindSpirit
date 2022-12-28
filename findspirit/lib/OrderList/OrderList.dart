@@ -11,39 +11,35 @@ class OrderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.house,
-              semanticLabel: 'home',
-            ),
-            onPressed: () {
-              Get.back();
-              // Get.toNamed('/home');
-              print('Home button');
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.shopping_cart,
-              semanticLabel: 'cart',
-            ),
-            onPressed: () {
-              Get.toNamed('/cart');
-              print('장바구니 버튼');
-            },
-          ),
-        ],
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        iconTheme: IconThemeData(size: 40),
         leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
+          icon: Icon(Icons.arrow_back_ios_new),
           onPressed: () {
-            print('menu button');
+            Navigator.pop(context);
           },
         ),
-        title: const Text('찾아주'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.home,
+              // size: 40,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+            icon: Icon(
+              Icons.shopping_cart,
+              // size: 40,
+            ),
+          )
+        ],
       ),
       body: ListView.builder(
         itemCount: 5,
