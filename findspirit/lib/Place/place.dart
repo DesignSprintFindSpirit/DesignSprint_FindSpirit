@@ -1,5 +1,18 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
-import './Widgets/googleMapSample.dart';
+import 'Widgets/googleMapSample.dart';
+import 'Widgets/placeInfo.dart';
+
+class Info {
+  final String adress = "adress";
+  final String pick_up_time = "pick_up_time";
+  final String phone_number = "phone_number";
+
+  Info(this.adress, this.pick_up_time, this.phone_number);
+}
+
+final Infos = List<Info>.generate(20, (index) => null)
 
 class Place extends StatelessWidget {
   const Place({super.key});
@@ -46,7 +59,7 @@ class Place extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: Text('현재 위치 : '),
+              child: Text('픽업 위치 : '),
             ),
           ),
           Padding(
@@ -65,45 +78,14 @@ class Place extends StatelessWidget {
             ),
           ),
           Expanded(
+            // Place Info ListView
             child: ListView(
               padding: const EdgeInsets.all(8),
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 5, 5, 5),
-                  height: 150,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 150,
-                        height: 130,
-                        child: Expanded(
-                          child:
-                              Image(image: AssetImage('/assets/images/gs.png')),
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
-                        ),
-                      ),
-                      VerticalDivider(
-                        thickness: 1,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white,
-                  ),
-                ),
+                placeInfo(),
+                placeInfo(),
+                placeInfo(),
+                placeInfo(),
               ],
             ),
           ),
