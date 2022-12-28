@@ -57,7 +57,7 @@ class _UserMapInfoState extends State<MapSample> {
               builder: (BuildContext context) {
                 return Container(
                   height: 200,
-                  color: Colors.white,
+                  color: Color.fromRGBO(255, 255, 255, 1),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

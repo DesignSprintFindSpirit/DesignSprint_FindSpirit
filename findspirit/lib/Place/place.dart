@@ -45,7 +45,7 @@ class Place extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
               child: Text('현재 위치 : '),
             ),
           ),
@@ -57,41 +57,24 @@ class Place extends StatelessWidget {
               child: MapSample(),
             ),
           ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Text('매장 정보'),
+            ),
+          ),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(8),
               children: <Widget>[
                 Container(
-                  height: 50,
+                  height: 100,
                   child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
-                ),
-                Container(
-                  height: 50,
-                  child: const Center(child: Text('hello')),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),
