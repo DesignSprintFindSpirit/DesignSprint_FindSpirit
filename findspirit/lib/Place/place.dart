@@ -39,7 +39,65 @@ class Place extends StatelessWidget {
           )
         ],
       ),
-      body: MapSample(),
+      body: Container(
+          child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
+              child: Text('현재 위치 : '),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 5 * 2,
+              child: MapSample(),
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+                Container(
+                  height: 50,
+                  child: const Center(child: Text('hello')),
+                ),
+              ],
+            ),
+          ),
+        ],
+      )),
     ));
   }
 }

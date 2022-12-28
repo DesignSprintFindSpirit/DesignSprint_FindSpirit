@@ -81,15 +81,13 @@ class _UserMapInfoState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _currentPosition,
-          zoom: 14.0,
-        ),
-        markers: Set.from(markers),
+    return GoogleMap(
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(
+        target: _currentPosition,
+        zoom: 14.0,
       ),
+      markers: Set.from(markers),
     );
   }
 }
