@@ -3,22 +3,15 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'Widgets/googleMapSample.dart';
 import 'Widgets/placeInfo.dart';
-
-class Info {
-  final String adress = "adress";
-  final String pick_up_time = "pick_up_time";
-  final String phone_number = "phone_number";
-
-  Info(this.adress, this.pick_up_time, this.phone_number);
-}
-
-final Infos = List<Info>.generate(20, (index) => null)
+import 'Widgets/AdressControler.dart';
+import 'package:get/get.dart';
 
 class Place extends StatelessWidget {
   const Place({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(AdressController());
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -59,7 +52,9 @@ class Place extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: Text('픽업 위치 : '),
+              child: GetBuilder<AdressController>(builder: (controller) {
+                return Text('픽업 위치 :' + controller.getAdress());
+              }),
             ),
           ),
           Padding(
@@ -82,10 +77,21 @@ class Place extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(8),
               children: <Widget>[
-                placeInfo(),
-                placeInfo(),
-                placeInfo(),
-                placeInfo(),
+                placeInfo(
+                  adress: "궁동 458-13 GS25 충남대빌리지점",
+                  pickup_time: "09:00 ~ 23:00",
+                  phone_number: "042)123-4567",
+                ),
+                placeInfo(
+                  adress: "궁동 479-11 세븐일레븐충남대사랑점",
+                  pickup_time: "20:00 ~ 23:00",
+                  phone_number: "042)379-8379",
+                ),
+                placeInfo(
+                  adress: "궁동 414-16 GS25 궁동충남대점",
+                  pickup_time: "10:00 ~ 23:00",
+                  phone_number: "042)1234-1234",
+                ),
               ],
             ),
           ),

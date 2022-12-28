@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class placeInfo extends StatelessWidget {
-  const placeInfo({super.key});
+  final String adress;
+  final String pickup_time;
+  final String phone_number;
+
+  const placeInfo(
+      {super.key,
+      required this.adress,
+      required this.pickup_time,
+      required this.phone_number});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +40,7 @@ class placeInfo extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                    child: Text('GS25 궁동점',
+                    child: Text(adress,
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold)),
                   ),
@@ -50,7 +58,7 @@ class placeInfo extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                    child: Text('09:00 ~ 23:00',
+                    child: Text(pickup_time,
                         style: TextStyle(
                           fontSize: 10,
                         )),
@@ -69,7 +77,7 @@ class placeInfo extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                    child: Text('042)000-0000',
+                    child: Text(phone_number,
                         style: TextStyle(
                           fontSize: 10,
                         )),
