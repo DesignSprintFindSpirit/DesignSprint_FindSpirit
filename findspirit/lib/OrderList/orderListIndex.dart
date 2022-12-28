@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import './Widgets/qrCodeBox.dart';
 import './Widgets/DeliveryStatusBox.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(OrderListIndex());
 
-class MyApp extends StatelessWidget {
+class OrderListIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -53,32 +53,42 @@ class OrderList extends StatelessWidget {
 }
 
 Widget buildOrderCard() {
-  return Card(
-    elevation: 4.0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 13.0),
-      child: Row(
-        children: <Widget>[
-          Flexible(flex: 1, child: alcohol('assets/images/whiskey.png', '위스키')),
-          Flexible(flex: 3, child: AddressAndName('유성구 궁동 99', '제임슨 스탠다드', 3)),
-          Flexible(
-            flex: 1,
-            child: Column(
+  return InkWell(
+      onTap: () {
+        Get.toNamed("/orderListIndex");
+      },
+      child: Container(
+        child: Card(
+          elevation: 4.0,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 13.0),
+            child: Row(
               children: <Widget>[
-                QrImage(
-                  data: "위스키/유성구 궁동 xxx/제임슨 스탠다드/3",
-                  version: QrVersions.auto,
-                  backgroundColor: Colors.white,
-                  size: 100.0,
-                )
+                Flexible(
+                    flex: 1,
+                    child: alcohol('assets/images/whiskey.png', '위스키')),
+                Flexible(
+                    flex: 3, child: AddressAndName('유성구 궁동 99', '제임슨 스탠다드', 3)),
+                Flexible(
+                  flex: 1,
+                  child: Column(
+                    children: <Widget>[
+                      QrImage(
+                        data: "위스키/유성구 궁동 xxx/제임슨 스탠다드/3",
+                        version: QrVersions.auto,
+                        backgroundColor: Colors.white,
+                        size: 100.0,
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-        ],
-      ),
-    ),
-  );
+        ),
+      ));
 }
 
 // Widget buildOrderCard() {
