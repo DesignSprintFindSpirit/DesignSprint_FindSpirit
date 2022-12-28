@@ -1,5 +1,5 @@
+import 'package:findspirit/OrderList/Widgets/QrCodeGenerator.dart';
 import 'package:flutter/material.dart';
-import './Widgets/qrCodeBox.dart';
 import './Widgets/DeliveryStatusBox.dart';
 import 'package:get/get.dart';
 
@@ -52,7 +52,21 @@ class OrderListIndex extends StatelessWidget {
             Text("픽업 장소 : 대전 유성구 궁동",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 32),
-            qrCodeBox(),
+            Container(
+              child: QrCodeGenerator("위스키/유성구 궁동 99/제임슨 스탠다드/3", 250.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    blurRadius: 5,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
             Text(
               '배송 현황',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 33),
