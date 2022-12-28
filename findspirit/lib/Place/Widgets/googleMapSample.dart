@@ -85,6 +85,8 @@ class _UserMapInfoState extends State<MapSample> {
             onPressed: () {
               mapController
                   .animateCamera(CameraUpdate.newLatLng(_currentPosition));
+              final PlaceController = Get.put(placeInfoController());
+              PlaceController.resetPlace();
             },
             child: Icon(Icons.my_location),
           ),

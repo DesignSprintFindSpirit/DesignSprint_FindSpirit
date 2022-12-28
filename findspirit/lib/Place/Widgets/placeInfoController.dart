@@ -82,6 +82,14 @@ class placeInfoController extends GetxController {
     update();
   }
 
+  void resetPlace() {
+    target._adress = "";
+    target._pickup_time = "";
+    target._phone_number = "";
+    target_exsist = false;
+    update();
+  }
+
   int getPlaceIndex() {
     if (target_exsist)
       return 1;
