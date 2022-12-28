@@ -47,6 +47,30 @@ class OrderList extends StatelessWidget {
           return buildOrderCard();
         },
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 70,
+          decoration: BoxDecoration(
+              border: Border(top: BorderSide(color: Colors.black, width: 3))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.receipt,
+                size: 40,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text(
+                '총액: 156,000원',
+                textAlign: TextAlign.right,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              ),
+            ],
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
     );
   }
@@ -55,7 +79,9 @@ class OrderList extends StatelessWidget {
 Widget buildOrderCard() {
   return InkWell(
       onTap: () {
+
         Get.toNamed("/orderListIndex");
+
       },
       child: Container(
         child: Card(
@@ -63,7 +89,9 @@ Widget buildOrderCard() {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
           child: Padding(
+
             padding: const EdgeInsets.symmetric(horizontal: 13.0),
+
             child: Row(
               children: <Widget>[
                 Flexible(
