@@ -79,7 +79,9 @@ class OrderList extends StatelessWidget {
 Widget buildOrderCard() {
   return InkWell(
       onTap: () {
-        Get.toNamed('/orderListIndex');
+
+        Get.toNamed("/orderListIndex");
+
       },
       child: Container(
         child: Card(
@@ -87,7 +89,9 @@ Widget buildOrderCard() {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
           child: Padding(
-            padding: const EdgeInsets.only(top: 30),
+
+            padding: const EdgeInsets.symmetric(horizontal: 13.0),
+
             child: Row(
               children: <Widget>[
                 Flexible(

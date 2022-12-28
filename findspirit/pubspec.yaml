@@ -38,6 +38,7 @@ dependencies:
   google_maps_widget: ^1.0.5+1
   google_maps_flutter: ^2.2.2
   get: ^4.6.5
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,7 @@ flutter:
     - assets/images/vodka.png
     - assets/images/whiskey.png
     - assets/images/wine.png
+    - assets/images/busimil.png
 
   #   - images/a_dot_ham.jpeg
 

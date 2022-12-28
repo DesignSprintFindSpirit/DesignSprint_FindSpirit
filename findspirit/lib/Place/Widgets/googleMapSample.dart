@@ -1,50 +1,93 @@
-import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:google_maps_widget/google_maps_widget.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MapSample extends StatefulWidget {
   const MapSample({Key? key}) : super(key: key);
-
   @override
-  State<MapSample> createState() => MapSampleState();
+  State<MapSample> createState() => _UserMapInfoState();
 }
 
-class MapSampleState extends State<MapSample> {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
+class _UserMapInfoState extends State<MapSample> {
+  // 지도 클릭 시 표시할 장소에 대한 마커 목록
+  final List<Marker> markers = [];
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
+  late GoogleMapController mapController;
+  late LatLng _currentPosition =
+      const LatLng(36.34341670217808, 127.41633363068104);
 
-  static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  @override
+  void initState() {
+    super.initState();
+    getLocation();
+  }
+
+  // cur location fetch
+  getLocation() async {
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    double lat = position.latitude;
+    double long = position.longitude;
+
+    LatLng location = LatLng(lat, long);
+    _currentPosition = location;
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    addMarker(LatLng(36.3620646, 127.341827), "궁동 458-13 GS25 충남대빌리지점");
+    addMarker(LatLng(36.3618326, 127.344154), "궁동 479-11 세븐일레븐충남대사랑점");
+    addMarker(LatLng(36.3621741, 127.347599), "궁동 414-16 GS25 궁동충남대점");
+  }
+
+  addMarker(cordinate, String Address) {
+    mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
+    int id = Random().nextInt(100);
+    setState(() {
+      markers.add(Marker(
+          markerId: MarkerId(id.toString()),
+          onTap: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  height: 200,
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(Address),
+                        ElevatedButton(
+                          child: const Text('선택'),
+                          onPressed: () => Navigator.pop(context),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          position: cordinate));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+    return GoogleMap(
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(
+        target: _currentPosition,
+        zoom: 14.0,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
-      ),
+      markers: Set.from(markers),
     );
-  }
-
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }
