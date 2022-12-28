@@ -28,11 +28,10 @@ class deliveryStatusBox extends StatelessWidget {
                   columns: const <DataColumn>[
                     DataColumn(
                       label: Expanded(
-                        child: Text(
-                          '12월 13일',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
+                        child: Text('12월 13일',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                     DataColumn(
@@ -41,16 +40,16 @@ class deliveryStatusBox extends StatelessWidget {
                           '위치',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
                     DataColumn(
                       label: Expanded(
-                        child: Text(
-                          '상태',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
+                        child: Text('상태',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                   ],
@@ -59,26 +58,32 @@ class deliveryStatusBox extends StatelessWidget {
                       cells: <DataCell>[
                         DataCell(Text('11:20',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))),
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center)),
                         DataCell(Text('유성구 보관소',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))),
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center)),
                         DataCell(Text('보관',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))),
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center)),
                       ],
                     ),
                     DataRow(
                       cells: <DataCell>[
                         DataCell(Text('08:00',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))),
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center)),
                         DataCell(Text('옥천 hub',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))),
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center)),
                         DataCell(Text('출고',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))),
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                            textAlign: TextAlign.center))
                       ],
                     ),
                   ],
