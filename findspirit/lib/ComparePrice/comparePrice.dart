@@ -1,6 +1,9 @@
 import 'package:findspirit/ComparePrice/Widgets/productOrder.dart';
 import 'package:flutter/material.dart';
 import 'package:findspirit/ComparePrice/Widgets/productInfo.dart';
+import 'package:get/get.dart';
+import './Widgets/Review.dart';
+import 'Widgets/Infomation.dart';
 
 void main() {
   runApp(ComparePrice());
@@ -26,17 +29,37 @@ class _ComparePricePageState extends State<ComparePricePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        iconTheme: IconThemeData(size: 40),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
-            onPressed: null),
+          icon: Icon(Icons.arrow_back_ios_new),
+          onPressed: () {
+            // Navigator.pop(context);
+            Get.back();
+          },
+        ),
         actions: [
           IconButton(
-              icon: Icon(Icons.home, color: Colors.black), onPressed: null),
+            onPressed: () {
+              Get.offAllNamed('/');
+              // Get.offNamed(page)
+            },
+            icon: Icon(
+              Icons.home,
+              // size: 40,
+            ),
+          ),
           IconButton(
-              icon: Icon(Icons.shopping_cart, color: Colors.black),
-              onPressed: null),
+            onPressed: () {
+              Get.toNamed('/cart');
+            },
+            icon: Icon(
+              Icons.shopping_cart,
+              // size: 40,
+            ),
+          )
         ],
-        backgroundColor: Colors.white,
       ),
       body: ListView(children: [
         productInfo(),
@@ -62,26 +85,24 @@ class _ComparePricePageState extends State<ComparePricePage> {
                         ),
                       ),
                       Container(
-                          height: 400, //height of TabBarView
+                          height: 900, //height of TabBarView
                           decoration: BoxDecoration(
                               border: Border(
                                   top: BorderSide(
                                       color: Colors.grey, width: 0.5))),
                           child: TabBarView(children: <Widget>[
-                            Container(
-                                child: Center(
-                                    child: Column(
+                            Column(
                               children: [
                                 ProductOrder(),
                                 ProductOrder(),
                                 ProductOrder()
                               ],
-                            ))),
-                            Container(
-                              child: Center(child: ProductOrder()),
                             ),
-                            Container(
-                              child: Center(child: ProductOrder()),
+                            Column(
+                              children: [Infomation()],
+                            ),
+                            Column(
+                              children: [Review()],
                             ),
                           ]))
                     ])),
@@ -89,34 +110,46 @@ class _ComparePricePageState extends State<ComparePricePage> {
         ),
       ]),
       bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(200, 50),
-                  side: const BorderSide(width: 1, color: Colors.black),
-                  backgroundColor: Colors.white),
-              onPressed: () {},
-              child: const Text('장바구니 담기',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.black)),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(200, 50),
-                  side: const BorderSide(width: 1, color: Colors.black),
-                  backgroundColor: Colors.black),
-              onPressed: () {},
-              child: const Text('주문하기',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.white)),
-            ),
-          ],
+        child: Container(
+          height: 65,
+          child: Row(
+            children: [
+              Expanded(
+                  child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(width: 1, color: Colors.black)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "장바구니 추가",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    )
+                  ],
+                ),
+              )),
+              Expanded(
+                  child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    border: Border.all(width: 1, color: Colors.black)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "주문하기",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    )
+                  ],
+                ),
+              )),
+            ],
+          ),
         ),
       ),
     );
