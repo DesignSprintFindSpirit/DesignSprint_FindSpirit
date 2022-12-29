@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import '../../Category/Widgets/MidFilterControler.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
+var f = NumberFormat('###,###,###,###');
 
 class ProductOrder extends StatelessWidget {
-  ProductOrder({
-    super.key,
-  });
+  int index;
+  int num;
+  ProductOrder({super.key, required this.index, required this.num});
 
   @override
   Widget build(BuildContext context) {
+    final midFilterControler = Get.put(MidFilterControler());
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
       child: Container(
@@ -31,7 +37,7 @@ class ProductOrder extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  "남은 수량 32개",
+                  "남은 수량 ${f.format(num)}개",
                   style: TextStyle(fontSize: 14),
                 ),
               ]),
@@ -39,15 +45,19 @@ class ProductOrder extends StatelessWidget {
                 width: 10,
               ),
               Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "30,000원",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                child: GetBuilder<MidFilterControler>(
+                  builder: (controller) {
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${f.format(midFilterControler.target.getPrice()[index])}원",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
               Column(

@@ -4,6 +4,7 @@ import 'package:findspirit/ComparePrice/Widgets/productInfo.dart';
 import 'package:get/get.dart';
 import './Widgets/Review.dart';
 import 'Widgets/Infomation.dart';
+import '../Category/Widgets/MidFilterControler.dart';
 
 void main() {
   runApp(ComparePrice());
@@ -93,9 +94,18 @@ class _ComparePricePageState extends State<ComparePricePage> {
                           child: TabBarView(children: <Widget>[
                             Column(
                               children: [
-                                ProductOrder(),
-                                ProductOrder(),
-                                ProductOrder()
+                                ProductOrder(
+                                  index: 0,
+                                  num: 12,
+                                ),
+                                ProductOrder(
+                                  index: 1,
+                                  num: 23,
+                                ),
+                                ProductOrder(
+                                  index: 2,
+                                  num: 32,
+                                ),
                               ],
                             ),
                             Column(

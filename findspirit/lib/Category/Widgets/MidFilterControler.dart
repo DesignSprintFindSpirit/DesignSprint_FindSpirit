@@ -54,14 +54,24 @@ class spiritInfo {
 class MidFilterControler extends GetxController {
   final List<spiritInfo> _spiritInfoList = [
     spiritInfo('assets/images/busimil.png', '부시밀 10년', 4.1, 40, 700,
-        [30000, 35000, 38000], "셰리, 부드러운, 달콤한"),
-    spiritInfo('assets/images/busimil.png', '짹다니엘', 4.2, 40, 700,
-        [300000, 350000, 380000], "씁슬함, 부드러운"),
-    spiritInfo('assets/images/busimil.png', '부시밀 10년', 4.1, 40, 700,
-        [30000, 35000, 38000], "셰리, 부드러운, 달콤한"),
+        [30000, 35000, 39000], "셰리, 부드러운, 달콤한"),
+    spiritInfo('assets/images/busimil.png', '짹다니엘', 4.2, 45, 800,
+        [200000, 370000, 420000], "씁슬함, 부드러운"),
+    spiritInfo('assets/images/busimil.png', '참이슬', 4.82, 1113, 1000,
+        [10000, 15000, 18000], "맛없는"),
+    spiritInfo('assets/images/busimil.png', '진로', 4.22, 1313, 800,
+        [10000, 15000, 18000], "역겨운"),
   ];
+
+  late spiritInfo target = spiritInfo('assets/images/busimil.png', '부시밀 10년',
+      4.1, 40, 700, [30000, 35000, 38000], "셰리, 부드러운, 달콤한");
 
   List<spiritInfo> getplaceInfoList() {
     return _spiritInfoList;
+  }
+
+  void setSpiritInfo(spiritInfo changeTarget) {
+    target = changeTarget;
+    update();
   }
 }

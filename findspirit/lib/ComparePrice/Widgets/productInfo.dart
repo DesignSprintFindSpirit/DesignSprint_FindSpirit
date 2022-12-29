@@ -1,10 +1,16 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import "../../Category/Widgets/MidFilterControler.dart";
+import 'package:intl/intl.dart';
+
+var f = NumberFormat('###,###,###,###');
 
 class productInfo extends StatelessWidget {
   const productInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final midFilterControler = Get.put(MidFilterControler());
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
       child: Container(
@@ -38,32 +44,41 @@ class productInfo extends StatelessWidget {
                     width: 10,
                   ),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("셰리, 부드러운, 달콤한",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Color(0xFFC1AAAA))),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text("Jack 다니엘",
-                            style: TextStyle(fontSize: 25),
-                            textAlign: TextAlign.left),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text("최저가 30,000원",
-                            style: TextStyle(fontSize: 20),
-                            textAlign: TextAlign.left),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text("도수 40% Val.", style: TextStyle(fontSize: 10)),
-                        Text("용량 700mL", style: TextStyle(fontSize: 10)),
-                      ],
+                    child: GetBuilder<MidFilterControler>(
+                      builder: (controller) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(midFilterControler.target.getIntroduce(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                    color: Color(0xFFC1AAAA))),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(midFilterControler.target.getName(),
+                                style: TextStyle(fontSize: 25),
+                                textAlign: TextAlign.left),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                                "최저가 ${f.format(midFilterControler.target.getPrice()[0])} 원",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.left),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                                "도수 ${midFilterControler.target.getProof()}% Val.",
+                                style: TextStyle(fontSize: 10)),
+                            Text(
+                                "용량 ${midFilterControler.target.getCapacity()}mL",
+                                style: TextStyle(fontSize: 10)),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ],
