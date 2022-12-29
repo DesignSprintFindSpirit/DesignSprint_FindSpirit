@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'Category/MidFilter.dart';
 import 'OrderList/OrderList.dart';
 import 'Category/MidFilter.dart';
+import 'ComparePrice/ComparePrice.dart';
 import 'OrderList/OrderListIndex.dart';
 
 void main() async {
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/orderListIndex', page: () => OrderListIndex()),
         GetPage(name: '/place', page: () => Place()),
         GetPage(name: '/cart', page: () => Cart()),
+        GetPage(name: '/midFilterIndex', page: () => ComparePrice()),
       ],
     );
   }
