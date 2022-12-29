@@ -37,10 +37,18 @@ class CartListViewController extends GetxController {
     }
   }
 
-  addLiquorBox(CartLiquorBox item) {
+  addLiquorBox(
+      String imgLink, String liquorName, int liquorPrice, int liquorAmount) {
     // myCart.value.add(item);
-    myCart.add(item);
 
+    myCart.add(CartLiquorBox(
+        imgLink: imgLink,
+        liquorName: liquorName,
+        liquorPrice: liquorPrice,
+        liquorAmount: liquorAmount,
+        liquorIndex: 0));
+
+    setAllLiquorListIndex();
     update();
   }
 

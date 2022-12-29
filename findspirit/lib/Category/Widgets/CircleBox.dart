@@ -16,7 +16,7 @@ class CircleBox extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               children: [
-                CircleUI('assets/images/whiskey.png', '위스키'),
+                CircleUI('assets/alcohols/buck.jpg', '벅'),
                 CircleUI('assets/images/whiskey.png', '위스키'),
                 CircleUI('assets/images/whiskey.png', '위스키'),
                 CircleUI('assets/images/whiskey.png', '위스키'),
