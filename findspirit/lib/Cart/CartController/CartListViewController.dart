@@ -18,6 +18,17 @@ class CartListViewController extends GetxController {
     }
   }
 
+  void replaceLiquorDup() {
+    List<String> LiquorNames = [];
+
+    for (var i = 0; i < myCart.length - 1; i++) {
+      if (myCart[i].liquorName == myCart[i + 1].liquorName) {
+        myCart[i].liquorAmount += myCart[i + 1].liquorAmount;
+        myCart.removeAt(i + 1);
+      }
+    }
+  }
+
   int getTotalPrice() {
     int total = 0;
 
@@ -35,6 +46,8 @@ class CartListViewController extends GetxController {
     for (int i = 0; i < myCart.length; i++) {
       myCart[i].liquorIndex = i;
     }
+
+    replaceLiquorDup();
   }
 
   addLiquorBox(

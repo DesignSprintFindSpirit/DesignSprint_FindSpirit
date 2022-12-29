@@ -28,7 +28,7 @@ class MidFilterCard extends StatelessWidget {
           onTap: () {
             final controller = Get.put(MidFilterControler());
             controller.setSpiritInfo(spiritInfo(imgLink, title, star, dosu, ml,
-                [minPrice, price1, price2], tasty));
+                [minPrice, price1, price2], tasty, 0));
             Get.toNamed("/midFilterIndex");
           },
           child: Container(
