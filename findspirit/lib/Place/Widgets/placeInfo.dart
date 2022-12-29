@@ -128,6 +128,7 @@ class placeInfoContainer extends StatelessWidget {
                                     Get.put(placeInfoController());
                                 controller.setPlace(adress, pickup_time,
                                     phone_number, real_adress);
+                                Get.toNamed("/");
                               },
                               child: Text('선택')),
                         ],
