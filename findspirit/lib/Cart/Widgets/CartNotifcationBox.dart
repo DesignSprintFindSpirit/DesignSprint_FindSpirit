@@ -31,27 +31,29 @@ class CartNotificationBox extends StatelessWidget {
                 width: double.infinity,
                 alignment: Alignment.topLeft,
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
                     Text(
                       "픽업 장소",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     Text(
                       '$pickupPlace',
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Text(
                       "픽업 날짜",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     Text(
                       '$pickupDate',
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 18),
                     ),
                   ],
                 ),

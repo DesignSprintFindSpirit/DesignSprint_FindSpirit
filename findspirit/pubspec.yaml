@@ -39,6 +39,9 @@ dependencies:
   google_maps_flutter: ^2.2.2
   get: ^4.6.5
   geolocator: ^9.0.2
+  intl: ^0.18.0
+  firebase_core: ^2.4.0
+  cloud_firestore: ^4.3.0
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +79,8 @@ flutter:
     - assets/images/wine.png
     - assets/images/busimil.png
     - assets/images/gs.png
+    - assets/images/logo.png
+    - assets/images/chacha.png
 
   #   - images/a_dot_ham.jpeg
 

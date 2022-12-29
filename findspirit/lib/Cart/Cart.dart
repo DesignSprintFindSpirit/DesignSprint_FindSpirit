@@ -55,22 +55,7 @@ class Cart extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   children: [
                     CartLiquorBox(
-                        liquorName: "잭다니엘",
-                        liquorPrice: 30000,
-                        liquorAmount: 1),
-                    CartLiquorBox(
-                        liquorName: "잭다니엘",
-                        liquorPrice: 30000,
-                        liquorAmount: 1),
-                    CartLiquorBox(
-                        liquorName: "잭다니엘",
-                        liquorPrice: 30000,
-                        liquorAmount: 1),
-                    CartLiquorBox(
-                        liquorName: "잭다니엘",
-                        liquorPrice: 30000,
-                        liquorAmount: 1),
-                    CartLiquorBox(
+                        imgLink: 'assets/images/busimil.png',
                         liquorName: "잭다니엘",
                         liquorPrice: 30000,
                         liquorAmount: 1),
