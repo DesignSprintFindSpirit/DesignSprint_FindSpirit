@@ -55,17 +55,17 @@ class MidFilterControler extends GetxController {
   final List<spiritInfo> _spiritInfoList = [
     spiritInfo('assets/alcohols/1792.jpg', '1792', 4.8, 62, 750,
         [125000, 130000, 140000], "바닐라, 진한, 달콤한"),
-    spiritInfo('assets/images/noahs_mill.jpg', '노아스밀', 4.6, 57, 750,
+    spiritInfo('assets/alcohols/noahs_mill.jpg', '노아스밀', 4.6, 57, 750,
         [164900, 174900, 184900], "바닐라, 민트, 오크향"),
-    spiritInfo('assets/images/knob_creek.jpg', '놉크릭', 4.7, 50, 750,
+    spiritInfo('assets/alcohols/knob_creek.jpg', '놉크릭', 4.7, 50, 750,
         [80000, 85000, 90000], "바닐라, 오크향, 부드러움"),
-    spiritInfo('assets/images/russells_reserve.jpg', '러셀 리저브', 4.7, 55, 750,
+    spiritInfo('assets/alcohols/russells_reserve.jpg', '러셀 리저브', 4.7, 55, 750,
         [108300, 110000, 125320], "시나몬, 크리미, 달콤한"),
-    spiritInfo('assets/images/makers_Mark.jpg', '메이커스 마크', 4.4, 45, 750,
+    spiritInfo('assets/alcohols/makers_Mark.jpg', '메이커스 마크', 4.4, 45, 750,
         [59000, 60000, 63000], "바닐라, 부드러움, 깨끗함"),
-    spiritInfo('assets/images/buffalo_Trace.jpg', '버팔로 트레이스', 4.6, 45, 750,
+    spiritInfo('assets/alcohols/buffalo_Trace.jpg', '버팔로 트레이스', 4.6, 45, 750,
         [59500, 69500, 79500], "호밀, 오크, 드라이함"),
-    spiritInfo('assets/images/bulleit.jpg', '불렛', 4.8, 45, 700,
+    spiritInfo('assets/alcohols/bulleit.jpg', '불렛', 4.8, 45, 700,
         [67000, 70000, 72000], "오렌지, 스파이시함, 부드러움"),
   ];
 

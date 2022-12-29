@@ -53,7 +53,12 @@ class MidFilterCard extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        Image.asset(this.imgLink),
+                        SizedBox(
+                            width: 100,
+                            child: Image.asset(
+                              this.imgLink,
+                              fit: BoxFit.fill,
+                            )),
                         Expanded(
                           child: Column(
                             children: [
