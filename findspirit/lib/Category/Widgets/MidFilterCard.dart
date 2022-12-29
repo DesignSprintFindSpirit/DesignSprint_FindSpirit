@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
+import 'MidFilterControler.dart';
+
 var f = NumberFormat('###,###,###,###');
 
 class MidFilterCard extends StatelessWidget {
@@ -24,6 +26,9 @@ class MidFilterCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 13),
         child: InkWell(
           onTap: () {
+            final controller = Get.put(MidFilterControler());
+            controller.setSpiritInfo(spiritInfo(imgLink, title, star, dosu, ml,
+                [minPrice, price1, price2], tasty));
             Get.toNamed("/midFilterIndex");
           },
           child: Container(
