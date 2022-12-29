@@ -12,23 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CartListViewController.init([
-      // for Debug!
-      CartLiquorBox(
-        imgLink: 'assets/images/busimil.png',
-        liquorName: "잭다니엘",
-        liquorPrice: 30000,
-        liquorAmount: 1,
-        liquorIndex: 0,
-      ),
-      CartLiquorBox(
-        imgLink: 'assets/images/busimil.png',
-        liquorName: "부시밀",
-        liquorPrice: 50000,
-        liquorAmount: 1,
-        liquorIndex: 1,
-      ),
-    ]));
+    Get.put(CartListViewController());
 
     return MaterialApp(
         home: Scaffold(

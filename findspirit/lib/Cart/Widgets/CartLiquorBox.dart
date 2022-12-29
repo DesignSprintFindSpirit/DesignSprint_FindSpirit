@@ -49,7 +49,12 @@ class CartLiquorBox extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(10),
               child: Row(children: [
-                Image.asset(imgLink!),
+                SizedBox(
+                    width: 100,
+                    child: Image.asset(
+                      imgLink!,
+                      fit: BoxFit.fill,
+                    )),
                 Expanded(
                     child: Column(
                   children: [
