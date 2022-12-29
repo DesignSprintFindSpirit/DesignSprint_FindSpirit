@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Place/Widgets/placeInfoController.dart';
+
 class pickPlaceBtn extends StatelessWidget {
   const pickPlaceBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final PlaceController = Get.put(placeInfoController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 13),
       child: Column(
@@ -25,7 +28,16 @@ class pickPlaceBtn extends StatelessWidget {
                 Icon(
                   Icons.arrow_drop_down,
                   size: 24,
-                )
+                ),
+                GetBuilder<placeInfoController>(
+                  builder: (controller) {
+                    return Text(
+                      PlaceController.target.getHomePagePlace(),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    );
+                  },
+                ),
               ],
             ),
           ),

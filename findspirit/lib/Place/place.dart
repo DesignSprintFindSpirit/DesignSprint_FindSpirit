@@ -48,17 +48,8 @@ class Place extends StatelessWidget {
       body: Container(
           child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: GetBuilder<placeInfoController>(builder: (controller) {
-                return Text('픽업 위치 :' + controller.target.getAdress());
-              }),
-            ),
-          ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(13),
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 5 * 2,
@@ -69,7 +60,12 @@ class Place extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: Text('매장 정보'),
+              child: Text(
+                '매장 정보',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Expanded(
@@ -87,6 +83,8 @@ class Place extends StatelessWidget {
                             .getPickupTime(),
                         phone_number: PlaceController.getplaceInfoList()[index]
                             .getPhoneNumber(),
+                        real_adress: PlaceController.getplaceInfoList()[index]
+                            .getRealAdress(),
                       );
                     }));
               },
