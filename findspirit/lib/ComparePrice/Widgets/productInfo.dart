@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import "../../Category/Widgets/MidFilterControler.dart";
+import 'ProductOrderController.dart';
 import 'package:intl/intl.dart';
 
 var f = NumberFormat('###,###,###,###');
@@ -10,7 +11,7 @@ class productInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final midFilterControler = Get.put(MidFilterControler());
+    final midFilterControler = Get.find<MidFilterControler>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
       child: Container(

@@ -4,12 +4,32 @@ import './Widgets/PickPlace.dart';
 import './Widgets/AdBlock.dart';
 import './Widgets/OrderListBox.dart';
 import './Widgets/CategoryBox.dart';
+import '../Cart/CartController/CartListViewController.dart';
+import '../Cart/Widgets/CartLiquorBox.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CartListViewController.init([
+      // for Debug!
+      CartLiquorBox(
+        imgLink: 'assets/images/busimil.png',
+        liquorName: "잭다니엘",
+        liquorPrice: 30000,
+        liquorAmount: 1,
+        liquorIndex: 0,
+      ),
+      CartLiquorBox(
+        imgLink: 'assets/images/busimil.png',
+        liquorName: "부시밀",
+        liquorPrice: 50000,
+        liquorAmount: 1,
+        liquorIndex: 1,
+      ),
+    ]));
+
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
