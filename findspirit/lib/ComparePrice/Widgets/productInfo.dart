@@ -27,26 +27,46 @@ class productInfo extends StatelessWidget {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                      height: 100,
-                      width: 100,
-                      child: Image.asset('assets/images/jackDaniel.png')),
-                  Text("셰리, 부드러운, 달콤한",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Color(0xFFC1AAAA))),
-                  Text("Jack 다니엘"),
-                  Text("최저가 30,000원"),
-                  Text("도수 40% Val."),
-                  Text("용량 700mL"),
-                  Text("구매 732 | 재주문율 32%",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Color(0xFFC1AAAA))),
-                  Icon(Icons.star),
-                  Text("4.6"),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(
+                              height: 100,
+                              width: 100,
+                              child: Image.asset('assets/images/whiskey.png')),
+                          Text("구매 732 | 재주문율 32%",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: Color(0xFFC1AAAA)))
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text("셰리, 부드러운, 달콤한",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: Color(0xFFC1AAAA))),
+                          Text("Jack 다니엘",
+                              style: TextStyle(fontSize: 25),
+                              textAlign: TextAlign.left),
+                          Text("최저가 30,000원",
+                              style: TextStyle(fontSize: 20),
+                              textAlign: TextAlign.left),
+                          Text("도수 40% Val.", style: TextStyle(fontSize: 10)),
+                          Text("용량 700mL", style: TextStyle(fontSize: 10)),
+                          Row(
+                            children: [
+                              Icon(Icons.star),
+                              Text("4.6"),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                   Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
                 ],
               )),

@@ -1,3 +1,4 @@
+import 'package:findspirit/ComparePrice/Widgets/productOrder.dart';
 import 'package:flutter/material.dart';
 import 'package:findspirit/ComparePrice/Widgets/productInfo.dart';
 
@@ -68,28 +69,19 @@ class _ComparePricePageState extends State<ComparePricePage> {
                                       color: Colors.grey, width: 0.5))),
                           child: TabBarView(children: <Widget>[
                             Container(
-                              child: Center(
-                                child: Text('Display Tab 1',
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold)),
-                              ),
+                                child: Center(
+                                    child: Column(
+                              children: [
+                                ProductOrder(),
+                                ProductOrder(),
+                                ProductOrder()
+                              ],
+                            ))),
+                            Container(
+                              child: Center(child: ProductOrder()),
                             ),
                             Container(
-                              child: Center(
-                                child: Text('Display Tab 2',
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                            Container(
-                              child: Center(
-                                child: Text('Display Tab 3',
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold)),
-                              ),
+                              child: Center(child: ProductOrder()),
                             ),
                           ]))
                     ])),
