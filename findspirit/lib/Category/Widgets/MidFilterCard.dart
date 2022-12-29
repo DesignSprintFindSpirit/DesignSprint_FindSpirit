@@ -146,6 +146,8 @@ class MidFilterCard extends StatelessWidget {
                                           '최저가  ' +
                                               f.format(minPrice).toString() +
                                               '원',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold),
