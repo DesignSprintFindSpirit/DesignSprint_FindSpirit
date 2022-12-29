@@ -19,6 +19,7 @@ class OrderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SimpleController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -116,3 +117,5 @@ Widget buildOrderCard() {
         ),
       ));
 }
+
+class SimpleController extends GetxController {}
