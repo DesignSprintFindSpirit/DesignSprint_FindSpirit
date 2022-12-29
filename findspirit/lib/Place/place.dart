@@ -1,11 +1,17 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
-import './Widgets/googleMapSample.dart';
+import 'Widgets/googleMapSample.dart';
+import 'Widgets/placeInfo.dart';
+import 'Widgets/placeInfoController.dart';
+import 'package:get/get.dart';
 
 class Place extends StatelessWidget {
   const Place({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final PlaceController = Get.put(placeInfoController());
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -46,7 +52,9 @@ class Place extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Container(
               padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: Text('현재 위치 : '),
+              child: GetBuilder<placeInfoController>(builder: (controller) {
+                return Text('픽업 위치 :' + controller.target.getAdress());
+              }),
             ),
           ),
           Padding(
@@ -65,20 +73,25 @@ class Place extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(8),
-              children: <Widget>[
-                Container(
-                  height: 100,
-                  child: const Center(child: Text('hello')),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black,
-                  ),
-                ),
-              ],
+            // Place Info ListView
+            child: GetBuilder<placeInfoController>(
+              builder: (controller) {
+                return ListView.builder(
+                    itemCount: PlaceController.getPlaceIndex(),
+                    padding: const EdgeInsets.all(8),
+                    itemBuilder: ((context, index) {
+                      return placeInfoContainer(
+                        adress: PlaceController.getplaceInfoList()[index]
+                            .getAdress(),
+                        pickup_time: PlaceController.getplaceInfoList()[index]
+                            .getPickupTime(),
+                        phone_number: PlaceController.getplaceInfoList()[index]
+                            .getPhoneNumber(),
+                      );
+                    }));
+              },
             ),
-          ),
+          )
         ],
       )),
     ));
