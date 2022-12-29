@@ -35,6 +35,10 @@ class placeInfo {
   String getRealAdress() {
     return _real_adress;
   }
+
+  String getHomePagePlace() {
+    return _adress + " " + _real_adress;
+  }
 }
 
 class placeInfoController extends GetxController {
