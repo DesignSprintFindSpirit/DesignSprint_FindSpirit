@@ -49,23 +49,32 @@ class MidFilter extends StatelessWidget {
       // alcohol('assets/images/whiskey.png', '위스키'),
       body: GetBuilder<MidFilterControler>(
         builder: (controller) {
-          return ListView.builder(
-              itemCount: spiritListController.getplaceInfoList().length,
-              padding: const EdgeInsets.all(8),
-              itemBuilder: ((context, index) {
-                spiritInfo curSpiritInfo =
-                    spiritListController.getplaceInfoList()[index];
-                return MidFilterCard(
-                    curSpiritInfo.getImagePath(),
-                    curSpiritInfo.getName(),
-                    curSpiritInfo.getStar(),
-                    curSpiritInfo.getProof(),
-                    curSpiritInfo.getCapacity(),
-                    curSpiritInfo.getPrice()[0],
-                    curSpiritInfo.getPrice()[1],
-                    curSpiritInfo.getPrice()[2],
-                    curSpiritInfo.getIntroduce());
-              }));
+          return Column(
+            children: [
+              CircleBox(),
+              SearchBar(),
+              FliterBox(),
+              Expanded(
+                child: ListView.builder(
+                    itemCount: spiritListController.getplaceInfoList().length,
+                    padding: const EdgeInsets.all(8),
+                    itemBuilder: ((context, index) {
+                      spiritInfo curSpiritInfo =
+                          spiritListController.getplaceInfoList()[index];
+                      return MidFilterCard(
+                          curSpiritInfo.getImagePath(),
+                          curSpiritInfo.getName(),
+                          curSpiritInfo.getStar(),
+                          curSpiritInfo.getProof(),
+                          curSpiritInfo.getCapacity(),
+                          curSpiritInfo.getPrice()[0],
+                          curSpiritInfo.getPrice()[1],
+                          curSpiritInfo.getPrice()[2],
+                          curSpiritInfo.getIntroduce());
+                    })),
+              )
+            ],
+          );
         },
       ),
       // ListView(
