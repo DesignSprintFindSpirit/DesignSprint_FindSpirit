@@ -4,11 +4,31 @@ import 'package:get/get.dart';
 import './Widgets/CartLiquorBox.dart';
 import './Widgets/CartNotifcationBox.dart';
 
+import './CartController/CartListViewController.dart';
+
 class Cart extends StatelessWidget {
   const Cart({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CartListViewController.init([
+      // for Debug!
+      CartLiquorBox(
+        imgLink: 'assets/images/busimil.png',
+        liquorName: "잭다니엘",
+        liquorPrice: 30000,
+        liquorAmount: 1,
+        liquorIndex: 0,
+      ),
+      CartLiquorBox(
+        imgLink: 'assets/images/busimil.png',
+        liquorName: "부시밀",
+        liquorPrice: 50000,
+        liquorAmount: 1,
+        liquorIndex: 1,
+      ),
+    ]));
+
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
@@ -42,46 +62,61 @@ class Cart extends StatelessWidget {
               )
             ],
           ),
-          body: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              CartNotificationBox(
-                  pickupPlace: "대전광역시 유성구 궁동 대학로 99",
-                  pickupDate: "1일 뒤 (2022년 12월 22일)"),
-              Expanded(
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  children: [
-                    CartLiquorBox(
-                        imgLink: 'assets/images/busimil.png',
-                        liquorName: "잭다니엘",
-                        liquorPrice: 30000,
-                        liquorAmount: 1),
-                  ],
+          body: GetBuilder<CartListViewController>(builder: (controller) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                CartNotificationBox(
+                    pickupPlace: "대전광역시 유성구 궁동 대학로 99",
+                    pickupDate: "1일 뒤 (2022년 12월 22일)"),
+                Expanded(
+                  // child: Obx(() => ListView.separated(
+                  //     scrollDirection: Axis.vertical,
+                  //     shrinkWrap: true,
+                  //     padding: EdgeInsets.zero,
+                  //     itemBuilder: ((context, index) {
+                  //       // return controller.myCart.value[index];
+                  //       return controller.myCart[index];
+                  //     }),
+                  //     separatorBuilder: ((context, index) => const Divider()),
+                  //     // itemCount: controller.myCart.value.length)),
+                  //     itemCount: controller.myCart.length)),
+
+                  child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    itemBuilder: ((context, index) {
+                      // return controller.myCart.value[index];
+                      return controller.myCart[index];
+                    }),
+                    separatorBuilder: ((context, index) => const Divider()),
+                    // itemCount: controller.myCart.value.length)),
+                    itemCount: controller.myCart.length,
+                  ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(Colors.black),
-                      foregroundColor: MaterialStatePropertyAll(Colors.white),
-                      padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                    ),
-                    onPressed: () => {},
-                    child: Container(
-                      height: 50,
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: Text(
-                        "360,000원 결제하기",
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(Colors.black),
+                        foregroundColor: MaterialStatePropertyAll(Colors.white),
+                        padding: MaterialStatePropertyAll(EdgeInsets.zero),
                       ),
-                    )),
-              ),
-            ],
-          )),
+                      onPressed: () => {},
+                      child: Container(
+                        height: 85,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        child: Text(
+                          "${controller.getTotalPrice()}원 결제하기",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      )),
+                ),
+              ],
+            );
+          })),
     );
     ;
   }
