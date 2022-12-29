@@ -48,15 +48,6 @@ class Place extends StatelessWidget {
       body: Container(
           child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: GetBuilder<placeInfoController>(builder: (controller) {
-                return Text('픽업 위치 :' + controller.target.getAdress());
-              }),
-            ),
-          ),
           Padding(
             padding: EdgeInsets.all(10),
             child: SizedBox(
@@ -87,6 +78,8 @@ class Place extends StatelessWidget {
                             .getPickupTime(),
                         phone_number: PlaceController.getplaceInfoList()[index]
                             .getPhoneNumber(),
+                        real_adress: PlaceController.getplaceInfoList()[index]
+                            .getRealAdress(),
                       );
                     }));
               },

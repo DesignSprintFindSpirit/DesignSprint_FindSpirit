@@ -6,18 +6,20 @@ class placeInfoContainer extends StatelessWidget {
   final String adress;
   final String pickup_time;
   final String phone_number;
+  final String real_adress;
 
-  const placeInfoContainer(
-      {super.key,
-      required this.adress,
-      required this.pickup_time,
-      required this.phone_number});
+  const placeInfoContainer({
+    super.key,
+    required this.adress,
+    required this.pickup_time,
+    required this.phone_number,
+    required this.real_adress,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 5, 5, 5),
-      height: 160,
       child: Row(
         children: [
           Container(
@@ -43,6 +45,15 @@ class placeInfoContainer extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
                     child: Text(adress,
+                        style: TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                    child: Text(real_adress,
                         style: TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold)),
                   ),
@@ -95,7 +106,8 @@ class placeInfoContainer extends StatelessWidget {
                         )),
                     onPressed: () {
                       final controller = Get.put(placeInfoController());
-                      controller.setPlace(adress, pickup_time, phone_number);
+                      controller.setPlace(
+                          adress, pickup_time, phone_number, real_adress);
                     },
                   )),
                 ),

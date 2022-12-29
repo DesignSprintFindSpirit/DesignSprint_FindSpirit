@@ -44,14 +44,17 @@ class _UserMapInfoState extends State<MapSample> {
     final PlaceController = Get.put(placeInfoController());
     for (int i = 0; i < PlaceController.placeInfoList.length; i++) {
       addMarker(
-          PlaceController.placeInfoList[i].getLatLng(),
-          PlaceController.placeInfoList[i].getAdress(),
-          PlaceController.placeInfoList[i].getPickupTime(),
-          PlaceController.placeInfoList[i].getPhoneNumber());
+        PlaceController.placeInfoList[i].getLatLng(),
+        PlaceController.placeInfoList[i].getAdress(),
+        PlaceController.placeInfoList[i].getPickupTime(),
+        PlaceController.placeInfoList[i].getPhoneNumber(),
+        PlaceController.placeInfoList[i].getRealAdress(),
+      );
     }
   }
 
-  addMarker(cordinate, String adress, String pickup_time, String phone_number) {
+  addMarker(cordinate, String adress, String pickup_time, String phone_number,
+      String real_adress) {
     mapController.animateCamera(CameraUpdate.newLatLng(cordinate));
     int id = Random().nextInt(100);
     setState(() {
@@ -59,7 +62,7 @@ class _UserMapInfoState extends State<MapSample> {
           markerId: MarkerId(id.toString()),
           onTap: () {
             final controller = Get.put(placeInfoController());
-            controller.setPlace(adress, pickup_time, phone_number);
+            controller.setPlace(adress, pickup_time, phone_number, real_adress);
           },
           position: cordinate));
     });
