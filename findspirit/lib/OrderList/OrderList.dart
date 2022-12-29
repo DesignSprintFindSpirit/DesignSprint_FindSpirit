@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:findspirit/Home/Widgets/Alcohols.dart';
 import './Widgets/AddressAndName.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'Widgets/OrderListController.dart';
 import 'package:get/get.dart';
 
 class OrderList extends StatelessWidget {
@@ -19,7 +20,8 @@ class OrderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SimpleController());
+    final OrderListController = Get.put(OrderListInfoController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -54,9 +56,15 @@ class OrderList extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: OrderListController.orderInfoList.length,
         itemBuilder: (context, index) {
-          return buildOrderCard();
+          OrderListInfo curInfo = OrderListController.orderInfoList[index];
+          return buildOrderCard(
+              curInfo.getKinds(),
+              curInfo.getAdress(),
+              curInfo.getProductName(),
+              curInfo.getProductNum(),
+              curInfo.getFullData());
         },
       ),
       bottomNavigationBar: BottomAppBar(
@@ -88,34 +96,63 @@ class OrderList extends StatelessWidget {
   }
 }
 
-Widget buildOrderCard() {
+Widget buildOrderCard(String kinds, String address, String productName,
+    int productNum, String data) {
   return InkWell(
-      onTap: () {
-        Get.toNamed("/orderListIndex");
-      },
-      child: Container(
-        child: Card(
-          elevation: 4.0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 13.0),
-            child: Row(
-              children: <Widget>[
-                Flexible(
-                    flex: 1,
-                    child: alcohol('assets/images/whiskey.png', '위스키')),
-                Flexible(
-                    flex: 3, child: AddressAndName('유성구 궁동 99', '제임슨 스탠다드', 3)),
-                Flexible(
-                  flex: 1,
-                  child: QrCodeGenerator("위스키/유성구 궁동 99/제임슨 스탠다드/3", 100.0),
-                ),
-              ],
-            ),
+    onTap: () {
+      Get.toNamed("/orderListIndex");
+    },
+    child: Container(
+      child: Card(
+        elevation: 4.0,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 13.0),
+          child: Row(
+            children: <Widget>[
+              Flexible(
+                  flex: 1, child: alcohol('assets/images/whiskey.png', kinds)),
+              Flexible(
+                  flex: 3,
+                  child: AddressAndName(address, productName, productNum)),
+              Flexible(
+                flex: 1,
+                child: QrCodeGenerator(data, 100.0),
+              ),
+            ],
           ),
         ),
-      ));
+      ),
+    ),
+  );
 }
-
-class SimpleController extends GetxController {}
+// Widget buildOrderCard() {
+//   return InkWell(
+//     onTap: () {
+//       Get.toNamed("/orderListIndex");
+//     },
+//     child: Container(
+//       child: Card(
+//         elevation: 4.0,
+//         shape:
+//             RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
+//         child: Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 13.0),
+//           child: Row(
+//             children: <Widget>[
+//               Flexible(
+//                   flex: 1, child: alcohol('assets/images/whiskey.png', '위스키')),
+//               Flexible(
+//                   flex: 3, child: AddressAndName('유성구 궁동 99', '제임슨 스탠다드', 3)),
+//               Flexible(
+//                 flex: 1,
+//                 child: QrCodeGenerator("위스키/유성구 궁동 99/제임슨 스탠다드/3", 100.0),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//   );
+// }
