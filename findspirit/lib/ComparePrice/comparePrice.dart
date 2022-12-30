@@ -31,34 +31,47 @@ class _ComparePricePageState extends State<ComparePricePage> {
   final addWishListController = Get.find<CartListViewController>();
   final currentLiquorController = Get.find<MidFilterControler>();
   final midFilterControler = Get.find<MidFilterControler>();
-  final productOrderController = Get.put(ProductOrderController.init([
-    // for Debug
-    ProductOrder(
-      index: 0,
-      num: 12,
-      liquorPrice: 30000,
-      liquorAmount: 0,
-      url: 'assets/images/dailyshoot.png',
-    ),
-    ProductOrder(
-      index: 1,
-      num: 23,
-      liquorPrice: 35000,
-      liquorAmount: 0,
-      url: 'assets/images/solospirit.png',
-    ),
-    ProductOrder(
-      index: 2,
-      num: 32,
-      liquorPrice: 38000,
-      liquorAmount: 0,
-      url: 'assets/images/spirittalk.png',
-    ),
-  ]));
+
+  List<int> orderPrices = [];
+
+  void setOrderInfomation() {
+    for (var element in currentLiquorController.target.getPrice()) {
+      // set Prices
+      orderPrices.add(element);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    setOrderInfomation();
+
+    final productOrderController = Get.put(ProductOrderController.init([
+      // for Debug
+      ProductOrder(
+        index: 0,
+        num: 12,
+        liquorPrice: orderPrices[0],
+        liquorAmount: 0,
+        url: 'assets/images/dailyshoot.png',
+      ),
+      ProductOrder(
+        index: 1,
+        num: 23,
+        liquorPrice: orderPrices[1],
+        liquorAmount: 0,
+        url: 'assets/images/solospirit.png',
+      ),
+      ProductOrder(
+        index: 2,
+        num: 32,
+        liquorPrice: orderPrices[2],
+        liquorAmount: 0,
+        url: 'assets/images/spirittalk.png',
+      ),
+    ]));
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -93,51 +106,53 @@ class _ComparePricePageState extends State<ComparePricePage> {
         ],
       ),
       body: GetBuilder<ProductOrderController>(builder: (controller) {
-        return Column(children: [
-          productInfo(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              DefaultTabController(
-                  length: 3, // length of tabs
-                  initialIndex: 0,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Container(
-                          child: TabBar(
-                            isScrollable: true,
-                            indicatorColor: Color(0xFF7E5354),
-                            labelColor: Color(0xFF7E5354),
-                            unselectedLabelColor: Colors.black,
-                            tabs: [
-                              Tab(text: '주문'),
-                              Tab(text: '술 정보'),
-                              Tab(text: '리뷰'),
-                            ],
+        return SingleChildScrollView(
+          child: Column(children: [
+            productInfo(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                DefaultTabController(
+                    length: 3, // length of tabs
+                    initialIndex: 0,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Container(
+                            child: TabBar(
+                              isScrollable: true,
+                              indicatorColor: Color(0xFF7E5354),
+                              labelColor: Color(0xFF7E5354),
+                              unselectedLabelColor: Colors.black,
+                              tabs: [
+                                Tab(text: '주문'),
+                                Tab(text: '술 정보'),
+                                Tab(text: '리뷰'),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                            height: MediaQuery.of(context).size.height,
-                            child: TabBarView(children: [
-                              ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                itemBuilder: ((context, index) {
-                                  // return productOrderController.myCart.value[index];
-                                  return controller.orderList[index];
-                                }),
-                                // itemCount: productOrderController.myCart.value.length)),
-                                itemCount: controller.orderList.length,
-                              ),
-                              Infomation(),
-                              Review(),
-                            ])),
-                      ])),
-            ],
-          ),
-        ]);
+                          Container(
+                              height: 600,
+                              child: TabBarView(children: [
+                                ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                  itemBuilder: ((context, index) {
+                                    // return productOrderController.myCart.value[index];
+                                    return controller.orderList[index];
+                                  }),
+                                  // itemCount: productOrderController.myCart.value.length)),
+                                  itemCount: controller.orderList.length,
+                                ),
+                                Infomation(),
+                                Review(),
+                              ])),
+                        ])),
+              ],
+            ),
+          ]),
+        );
       }),
       bottomNavigationBar: BottomAppBar(
         child: Container(

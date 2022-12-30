@@ -28,7 +28,7 @@ class CartLiquorBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CartListViewController());
+    final controller = Get.find<CartListViewController>();
 
     return GetBuilder<CartListViewController>(
       builder: (controller) {
