@@ -54,14 +54,14 @@ class OrderList extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        itemCount: OrderListController.orderInfoList.length,
+        itemCount: cartListController.myCart.length,
         itemBuilder: (context, index) {
           OrderListInfo curInfo = OrderListController.orderInfoList[index];
           return buildOrderCard(
               curInfo.getKinds(),
               curInfo.getAdress(),
-              curInfo.getProductName(),
-              curInfo.getProductNum(),
+              cartListController.myCart[index].liquorName,
+              cartListController.myCart[index].liquorAmount,
               curInfo.getFullData());
         },
       ),

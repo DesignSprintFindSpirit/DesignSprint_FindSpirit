@@ -85,7 +85,7 @@ class Cart extends StatelessWidget {
                         foregroundColor: MaterialStatePropertyAll(Colors.white),
                         padding: MaterialStatePropertyAll(EdgeInsets.zero),
                       ),
-                      onPressed: () => {},
+                      onPressed: () => {Get.toNamed("/orderList")},
                       child: Container(
                         height: 85,
                         width: double.infinity,
