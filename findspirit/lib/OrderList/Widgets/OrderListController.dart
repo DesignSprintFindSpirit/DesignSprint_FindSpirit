@@ -46,25 +46,25 @@ class OrderListInfoController extends GetxController {
   final List<OrderListInfo> orderInfoList = [
     OrderListInfo(
       "위스키",
-      "제임슨 스탠다드",
+      "메이커스 마크",
       "유성구 궁동 99",
       3,
     ),
     OrderListInfo(
       "위스키",
-      "버번",
+      "벅",
       "유성구 궁동 99",
       3,
     ),
     OrderListInfo(
       "위스키",
-      "싱글몰트",
+      "글렌리벳",
       "유성구 궁동 99",
       3,
     ),
     OrderListInfo(
       "위스키",
-      "블랜디드",
+      "버팔로 트레이스",
       "유성구 궁동 99",
       3,
     ),
