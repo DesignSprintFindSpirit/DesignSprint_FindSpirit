@@ -16,8 +16,8 @@ class CartLiquorBox extends StatelessWidget {
     required this.liquorAmount,
     required this.liquorIndex,
   });
-  String? imgLink;
-  String? liquorName;
+  String imgLink;
+  String liquorName;
   int liquorPrice;
   int liquorAmount;
   int liquorIndex;
