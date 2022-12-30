@@ -85,6 +85,7 @@ flutter:
     - assets/images/solospirit.png
     - assets/images/spirittalk.png
     - assets/alcohols/
+    - assets/banner/
 
   #   - images/a_dot_ham.jpeg
 
