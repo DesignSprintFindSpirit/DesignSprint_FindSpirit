@@ -1,3 +1,4 @@
+import 'package:findspirit/Cart/CartController/CartListViewController.dart';
 import 'package:findspirit/OrderList/Widgets/qrCodeGenerator.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,7 +17,7 @@ class OrderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OrderListController = Get.put(OrderListInfoController());
-
+    final cartListController = Get.find<CartListViewController>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -80,7 +81,7 @@ class OrderList extends StatelessWidget {
                 width: 20,
               ),
               Text(
-                '총액: 156,000원',
+                '총액: ${cartListController.getTotalPrice()}원',
                 textAlign: TextAlign.right,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
               ),
