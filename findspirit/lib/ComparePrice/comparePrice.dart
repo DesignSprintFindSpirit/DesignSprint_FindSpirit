@@ -132,7 +132,7 @@ class _ComparePricePageState extends State<ComparePricePage> {
                             ),
                           ),
                           Container(
-                              height: 300,
+                              height: 600,
                               child: TabBarView(children: [
                                 ListView.builder(
                                   scrollDirection: Axis.vertical,
