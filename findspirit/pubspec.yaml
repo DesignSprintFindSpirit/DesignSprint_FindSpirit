@@ -81,6 +81,9 @@ flutter:
     - assets/images/gs.png
     - assets/images/logo.png
     - assets/images/chacha.png
+    - assets/images/dailyshoot.png
+    - assets/images/solospirit.png
+    - assets/images/spirittalk.png
     - assets/alcohols/
 
   #   - images/a_dot_ham.jpeg
