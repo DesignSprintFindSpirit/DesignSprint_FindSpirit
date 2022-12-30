@@ -90,7 +90,7 @@ class CartLiquorBox extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  f.format(liquorPrice),
+                                  f.format(liquorPrice) + "원",
                                   style: TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold),
