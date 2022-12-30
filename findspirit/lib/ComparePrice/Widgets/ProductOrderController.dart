@@ -51,7 +51,7 @@ class ProductOrderController extends GetxController {
   }
 
   void decLiquorAmount(int index) {
-    if (orderList[index].liquorAmount > 1) {
+    if (orderList[index].liquorAmount > 0) {
       orderList[index].liquorAmount--;
     }
     update();
