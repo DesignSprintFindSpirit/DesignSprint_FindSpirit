@@ -31,33 +31,45 @@ class _ComparePricePageState extends State<ComparePricePage> {
   final addWishListController = Get.find<CartListViewController>();
   final currentLiquorController = Get.find<MidFilterControler>();
   final midFilterControler = Get.find<MidFilterControler>();
-  final productOrderController = Get.put(ProductOrderController.init([
-    // for Debug
-    ProductOrder(
-      index: 0,
-      num: 12,
-      liquorPrice: 30000,
-      liquorAmount: 0,
-      url: 'assets/images/dailyshoot.png',
-    ),
-    ProductOrder(
-      index: 1,
-      num: 23,
-      liquorPrice: 35000,
-      liquorAmount: 0,
-      url: 'assets/images/solospirit.png',
-    ),
-    ProductOrder(
-      index: 2,
-      num: 32,
-      liquorPrice: 38000,
-      liquorAmount: 0,
-      url: 'assets/images/spirittalk.png',
-    ),
-  ]));
+
+  List<int> orderPrices = [];
+
+  void setOrderInfomation() {
+    for (var element in currentLiquorController.target.getPrice()) {
+      // set Prices
+      orderPrices.add(element);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    setOrderInfomation();
+
+    final productOrderController = Get.put(ProductOrderController.init([
+      // for Debug
+      ProductOrder(
+        index: 0,
+        num: 12,
+        liquorPrice: orderPrices[0],
+        liquorAmount: 0,
+        url: 'assets/images/dailyshoot.png',
+      ),
+      ProductOrder(
+        index: 1,
+        num: 23,
+        liquorPrice: orderPrices[1],
+        liquorAmount: 0,
+        url: 'assets/images/solospirit.png',
+      ),
+      ProductOrder(
+        index: 2,
+        num: 32,
+        liquorPrice: orderPrices[2],
+        liquorAmount: 0,
+        url: 'assets/images/spirittalk.png',
+      ),
+    ]));
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
