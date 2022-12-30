@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import './Widgets/DeliveryStatusBox.dart';
 import 'package:get/get.dart';
 
-void main() => runApp(OrderListIndex());
-
 class OrderListIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,8 @@ class OrderListIndex extends StatelessWidget {
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios_new),
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
+              // Navigator.pop(context);
             },
           ),
           actions: [
@@ -33,7 +32,8 @@ class OrderListIndex extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/cart');
+                Get.toNamed('/cart');
+                // Navigator.pushNamed(context, '/cart');
               },
               icon: Icon(
                 Icons.shopping_cart,
@@ -46,14 +46,15 @@ class OrderListIndex extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 13),
           children: [
             SizedBox(height: 32),
-            Text("상품명 : 제임슨 스탠다드",
+            Text("상품명 : ${Get.arguments['productName']}",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 10),
-            Text("픽업 장소 : 대전 유성구 궁동",
+            Text("픽업 장소 : ${Get.arguments['address']}",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
             SizedBox(height: 32),
             Container(
-              child: QrCodeGenerator("위스키/유성구 궁동 99/제임슨 스탠다드/3", 250.0),
+              child: QrCodeGenerator('${Get.arguments['data']}', 250.0),
+              // child: QrCodeGenerator("위스키/유성구 궁동 99/제임슨 스탠다드/3", 250.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
