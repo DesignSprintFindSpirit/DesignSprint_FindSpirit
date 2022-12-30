@@ -12,15 +12,17 @@ class ProductOrder extends StatelessWidget {
   int liquorPrice;
   int liquorAmount; // 선택 수량
 
-  ProductOrder(
-      {super.key,
-      required this.index,
-      required this.num,
-      required this.liquorPrice,
-      required this.liquorAmount});
+  ProductOrder({
+    super.key,
+    required this.index,
+    required this.num,
+    required this.liquorPrice,
+    required this.liquorAmount,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final midFilterControler = Get.find<MidFilterControler>();
     final productOrderController = Get.put(ProductOrderController());
     //final productOrderController = Get.find<ProductOrderController>();
 
@@ -44,7 +46,7 @@ class ProductOrder extends StatelessWidget {
             child: Row(
               children: [
                 Column(children: [
-                  Image.asset("assets/images/whiskey.png"),
+                  Image.asset(midFilterControler.target.getImagePath()),
                   SizedBox(
                     height: 10,
                   ),
