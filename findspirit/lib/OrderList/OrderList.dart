@@ -62,7 +62,10 @@ class OrderList extends StatelessWidget {
               curInfo.getAdress(),
               cartListController.myCart[index].liquorName,
               cartListController.myCart[index].liquorAmount,
-              curInfo.getFullData());
+              curInfo.getKinds() +
+                  curInfo.getAdress() +
+                  cartListController.myCart[index].liquorName +
+                  cartListController.myCart[index].liquorAmount.toString());
         },
       ),
       bottomNavigationBar: BottomAppBar(
