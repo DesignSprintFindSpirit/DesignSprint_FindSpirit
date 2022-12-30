@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CartListViewController());
+    final controller = Get.find<CartListViewController>();
 
     return MaterialApp(
         home: Scaffold(

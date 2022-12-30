@@ -12,6 +12,7 @@ import 'OrderList/OrderList.dart';
 import 'Category/MidFilter.dart';
 import 'ComparePrice/ComparePrice.dart';
 import 'OrderList/OrderListIndex.dart';
+import 'Cart/CartController/CartListViewController.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(CartListViewController());
     return GetMaterialApp(
       title: 'TTaraJu',
       initialRoute: '/',
