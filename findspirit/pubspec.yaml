@@ -82,6 +82,7 @@ flutter:
     - assets/images/logo.png
     - assets/images/chacha.png
     - assets/alcohols/
+    - assets/banner/
 
   #   - images/a_dot_ham.jpeg
 
