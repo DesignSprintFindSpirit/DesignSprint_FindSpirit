@@ -37,7 +37,8 @@ class productInfo extends StatelessWidget {
                       children: [
                         SizedBox(
                             height: 100,
-                            child: Image.asset('assets/images/whiskey.png')),
+                            child: Image.asset(
+                                midFilterControler.target.getImagePath())),
                       ],
                     ),
                   ),

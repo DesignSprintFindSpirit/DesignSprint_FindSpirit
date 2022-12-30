@@ -30,6 +30,7 @@ class ComparePricePage extends StatefulWidget {
 class _ComparePricePageState extends State<ComparePricePage> {
   final addWishListController = Get.find<CartListViewController>();
   final currentLiquorController = Get.find<MidFilterControler>();
+  final midFilterControler = Get.find<MidFilterControler>();
   final productOrderController = Get.put(ProductOrderController.init([
     // for Debug
     ProductOrder(
