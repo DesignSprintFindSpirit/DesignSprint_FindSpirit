@@ -38,18 +38,21 @@ class _ComparePricePageState extends State<ComparePricePage> {
       num: 12,
       liquorPrice: 30000,
       liquorAmount: 0,
+      url: 'assets/images/dailyshoot.png',
     ),
     ProductOrder(
       index: 1,
       num: 23,
       liquorPrice: 35000,
       liquorAmount: 0,
+      url: 'assets/images/solospirit.png',
     ),
     ProductOrder(
       index: 2,
       num: 32,
       liquorPrice: 38000,
       liquorAmount: 0,
+      url: 'assets/images/spirittalk.png',
     ),
   ]));
 

@@ -27,10 +27,12 @@ class ProductOrderController extends GetxController {
     // myCart.value.add(item);
 
     orderList.add(ProductOrder(
-        liquorPrice: liquorPrice,
-        liquorAmount: liquorAmount,
-        num: maxAmount,
-        index: 0));
+      liquorPrice: liquorPrice,
+      liquorAmount: liquorAmount,
+      num: maxAmount,
+      index: 0,
+      url: "",
+    ));
 
     setAllLiquorListIndex();
     update();

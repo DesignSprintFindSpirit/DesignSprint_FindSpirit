@@ -11,13 +11,16 @@ class ProductOrder extends StatelessWidget {
   int num; // 재고 수량
   int liquorPrice;
   int liquorAmount; // 선택 수량
+  String url;
 
-  ProductOrder(
-      {super.key,
-      required this.index,
-      required this.num,
-      required this.liquorPrice,
-      required this.liquorAmount});
+  ProductOrder({
+    super.key,
+    required this.index,
+    required this.num,
+    required this.liquorPrice,
+    required this.liquorAmount,
+    required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +51,7 @@ class ProductOrder extends StatelessWidget {
                   SizedBox(
                       width: 100,
                       child: Image.asset(
-                        midFilterControler.target.getImagePath(),
+                        url,
                         fit: BoxFit.fill,
                       )),
                   SizedBox(
