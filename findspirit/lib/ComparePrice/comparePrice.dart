@@ -59,6 +59,7 @@ class _ComparePricePageState extends State<ComparePricePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
@@ -93,51 +94,53 @@ class _ComparePricePageState extends State<ComparePricePage> {
         ],
       ),
       body: GetBuilder<ProductOrderController>(builder: (controller) {
-        return Column(children: [
-          productInfo(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              DefaultTabController(
-                  length: 3, // length of tabs
-                  initialIndex: 0,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Container(
-                          child: TabBar(
-                            isScrollable: true,
-                            indicatorColor: Color(0xFF7E5354),
-                            labelColor: Color(0xFF7E5354),
-                            unselectedLabelColor: Colors.black,
-                            tabs: [
-                              Tab(text: '주문'),
-                              Tab(text: '술 정보'),
-                              Tab(text: '리뷰'),
-                            ],
+        return SingleChildScrollView(
+          child: Column(children: [
+            productInfo(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                DefaultTabController(
+                    length: 3, // length of tabs
+                    initialIndex: 0,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Container(
+                            child: TabBar(
+                              isScrollable: true,
+                              indicatorColor: Color(0xFF7E5354),
+                              labelColor: Color(0xFF7E5354),
+                              unselectedLabelColor: Colors.black,
+                              tabs: [
+                                Tab(text: '주문'),
+                                Tab(text: '술 정보'),
+                                Tab(text: '리뷰'),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                            height: MediaQuery.of(context).size.height,
-                            child: TabBarView(children: [
-                              ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                itemBuilder: ((context, index) {
-                                  // return productOrderController.myCart.value[index];
-                                  return controller.orderList[index];
-                                }),
-                                // itemCount: productOrderController.myCart.value.length)),
-                                itemCount: controller.orderList.length,
-                              ),
-                              Infomation(),
-                              Review(),
-                            ])),
-                      ])),
-            ],
-          ),
-        ]);
+                          Container(
+                              height: 300,
+                              child: TabBarView(children: [
+                                ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                  itemBuilder: ((context, index) {
+                                    // return productOrderController.myCart.value[index];
+                                    return controller.orderList[index];
+                                  }),
+                                  // itemCount: productOrderController.myCart.value.length)),
+                                  itemCount: controller.orderList.length,
+                                ),
+                                Infomation(),
+                                Review(),
+                              ])),
+                        ])),
+              ],
+            ),
+          ]),
+        );
       }),
       bottomNavigationBar: BottomAppBar(
         child: Container(
