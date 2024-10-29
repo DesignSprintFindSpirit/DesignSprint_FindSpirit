@@ -16,6 +16,12 @@
 ## 🗓️ 기간
 > 22.12.19 ~ 22.12.30
 
+## 👀 프로토타입(디자인)
+<img width="1018" alt="image" src="https://github.com/user-attachments/assets/8206d649-4047-421d-8e2b-945369ed9145">
+
+## 🔗 보고서 링크
+> [GoolgeDrive](https://docs.google.com/presentation/d/1UyeL8-HOvPZSV6XhXEkcq9wc3tGneWxp/edit?usp=sharing&ouid=101678405076365249909&rtpof=true&sd=true)
+
 ## 🔗 영상 링크
 > [youtube](https://youtube.com/shorts/Bx8vHkhaIOQ)
 
